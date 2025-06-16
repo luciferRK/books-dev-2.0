@@ -1,0 +1,11 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+.most-recent-read {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 41%;
+    height: 100dvh;
+    background-color: color.$secondary;
+    z-index: 1;
+}
