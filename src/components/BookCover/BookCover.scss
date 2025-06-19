@@ -1,0 +1,51 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+.book-cover {
+    height: 100dvh;
+    background-color: color.$secondary;
+}
+
+.book-cover.animated {
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+}
+
+.book-cover:not(.animated) {
+    width: 41dvw;
+}
+
+@keyframes appearFromLeftBookCoverSkeleton {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 41dvw;
+    }
+}
+
+@keyframes disappearToLeftBookCoverSkeleton {
+    0% {
+        width: 41dvw;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.exit {
+    .book-cover.animated {
+        animation: appearFromLeftBookCoverSkeleton 1.2s
+            cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        animation-delay: 0.1s;
+    }
+}
+
+.enter {
+    .book-cover.animated {
+        animation: disappearToLeftBookCoverSkeleton 1s
+            cubic-bezier(0.18, 1, 0.22, 1) forwards;
+    }
+}

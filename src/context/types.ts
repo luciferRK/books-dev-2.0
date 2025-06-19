@@ -17,7 +17,6 @@ export interface Book {
     amazonAudio: string;
   };
   dates: {
-    read: string;
     started: string;
     finished: string;
   };
@@ -29,7 +28,9 @@ export interface InitialGlobalStateType {
     home: boolean;
     book: boolean;
   };
+  imagesLoading: boolean;
   pageState: "enter" | "exit";
+  book: Book;
 }
 
 export interface GlobalContextType {

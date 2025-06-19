@@ -1,13 +1,16 @@
 import React from "react";
 import { type GlobalContextType, type InitialGlobalStateType } from "./types";
+import { SAMPLE_BOOK } from "../utils/constants";
 
 const initialState: InitialGlobalStateType = {
   allBooks: [],
   loading: {
-    home: false,
-    book: false,
+    home: true,
+    book: true,
   },
+  imagesLoading: true,
   pageState: "enter",
+  book: SAMPLE_BOOK,
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
@@ -31,6 +34,8 @@ const globalContextReducer = (
       return { ...state, loading: { ...state.loading, book: action.payload } };
     case "SET_PAGE_STATE":
       return { ...state, pageState: action.payload };
+    case "SET_IMAGES_LOADING":
+      return { ...state, imagesLoading: action.payload };
     default:
       return state;
   }

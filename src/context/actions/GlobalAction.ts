@@ -20,12 +20,17 @@ const useGlobalAction = () => {
     dispatch({ type: "SET_PAGE_STATE", payload: pageState });
   };
 
+  const setImagesLoading = (loading: boolean) => {
+    dispatch({ type: "SET_IMAGES_LOADING", payload: loading });
+  };
+
   return {
     state,
     setAllBooks,
     setLoadingHome,
     setLoadingBook,
     setPageState,
+    setImagesLoading,
   };
 };
 

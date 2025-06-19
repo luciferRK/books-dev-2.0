@@ -1,0 +1,14 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+.book-list {
+    .book-list-content {
+        width: 50%;
+        overflow-y: auto;
+        .book {
+            width: 5rem;
+            height: 5rem;
+            background-color: color.$white;
+            margin-bottom: 1rem;
+        }
+    }
+}

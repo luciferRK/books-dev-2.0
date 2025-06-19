@@ -15,8 +15,6 @@ const Routes = () => {
     }
   }, [location]);
 
-  console.log("sample");
-
   const element = useRoutes(
     [
       {
@@ -34,6 +32,9 @@ const Routes = () => {
   return (
     <div
       className={`pageWrapper ${state.pageState}`}
+      onAnimationIteration={(e) => {
+        console.log(e);
+      }}
       onAnimationEnd={() => {
         if (state.pageState === "exit") {
           setDelayedLocation(location);
