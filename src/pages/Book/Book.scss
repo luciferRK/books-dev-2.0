@@ -1,0 +1,7 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+.book-page {
+    width: 100dvw;
+    min-height: 100dvh;
+    display: flex;
+}
