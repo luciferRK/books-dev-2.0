@@ -1,6 +1,7 @@
 import React from "react";
 import "./BookItem.scss";
 import type { Book } from "../../../context/types";
+import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 
 interface BookItemProps {
   book: Book;
@@ -12,7 +13,7 @@ const BookItem: React.FC<BookItemProps> = (props) => {
   return (
     <div className="book-item" onClick={onClick}>
       <div className="cover-image">
-        <img src={book.image} alt={book.name} />
+        <img src={`${BOOK_COVER_PREFIX}${book.image}`} alt={book.name} />
       </div>
       <div className="author-name">{book.author.name}</div>
       <div className="title">{book.name}</div>

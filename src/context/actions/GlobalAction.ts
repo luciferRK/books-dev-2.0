@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "..";
+import type { Book } from "../types";
 
 const useGlobalAction = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -8,12 +9,8 @@ const useGlobalAction = () => {
     dispatch({ type: "SET_ALL_BOOKS", payload: books });
   };
 
-  const setLoadingHome = (loading: boolean) => {
-    dispatch({ type: "SET_LOADING_HOME", payload: loading });
-  };
-
-  const setLoadingBook = (loading: boolean) => {
-    dispatch({ type: "SET_LOADING_BOOK", payload: loading });
+  const setLoading = (loading: boolean) => {
+    dispatch({ type: "SET_LOADING", payload: loading });
   };
 
   const setPageState = (pageState: "enter" | "exit") => {
@@ -24,13 +21,33 @@ const useGlobalAction = () => {
     dispatch({ type: "SET_IMAGES_LOADING", payload: loading });
   };
 
+  const setBook = (book: Book) => {
+    dispatch({ type: "SET_BOOK", payload: book });
+  };
+
+  useEffect(() => {
+    if (state.allBooks.length === 0) {
+      setLoading(true);
+      fetch("/files/books.json")
+        .then((res) => res.json())
+        .then((data) => {
+          setAllBooks(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, [state.allBooks]);
+
   return {
     state,
     setAllBooks,
-    setLoadingHome,
-    setLoadingBook,
+    setLoading,
     setPageState,
     setImagesLoading,
+    setBook,
   };
 };
 

@@ -1,0 +1,17 @@
+@mixin small-desktop {
+    @media only screen and (min-width: 1250px) and (max-width: 1300px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: 1301px) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media only screen and (max-width: 1250px) {
+        @content;
+    }
+}

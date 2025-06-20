@@ -30,3 +30,5 @@ export const SAMPLE_BOOK: Book = {
     finished: "",
   },
 };
+
+export const BOOK_COVER_PREFIX = "/images/books/";

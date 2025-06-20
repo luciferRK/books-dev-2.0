@@ -2,12 +2,17 @@ import React from "react";
 import "./HomeHeading.scss";
 import { HEADINGS } from "../../utils/constants";
 
-const HomeHeading = () => {
+interface HomeHeadingProps {
+  ref: React.RefObject<HTMLDivElement>;
+}
+
+const HomeHeading: React.FC<HomeHeadingProps> = (props) => {
+  const { ref } = props;
   const [view, _] = React.useState("review");
 
   return (
     <div className="home-heading">
-      <div className="home-heading-content">
+      <div className="home-heading-content" ref={ref}>
         <div className="main-heading">{HEADINGS[view]}</div>
         <div className="expanded-options">
           <div className="option">NEW</div>

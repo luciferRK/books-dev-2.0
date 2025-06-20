@@ -4,10 +4,7 @@ import { SAMPLE_BOOK } from "../utils/constants";
 
 const initialState: InitialGlobalStateType = {
   allBooks: [],
-  loading: {
-    home: true,
-    book: true,
-  },
+  loading: true,
   imagesLoading: true,
   pageState: "enter",
   book: SAMPLE_BOOK,
@@ -28,14 +25,14 @@ const globalContextReducer = (
   switch (action.type) {
     case "SET_ALL_BOOKS":
       return { ...state, allBooks: action.payload };
-    case "SET_LOADING_HOME":
-      return { ...state, loading: { ...state.loading, home: action.payload } };
-    case "SET_LOADING_BOOK":
-      return { ...state, loading: { ...state.loading, book: action.payload } };
+    case "SET_LOADING":
+      return { ...state, loading: action.payload };
     case "SET_PAGE_STATE":
       return { ...state, pageState: action.payload };
     case "SET_IMAGES_LOADING":
       return { ...state, imagesLoading: action.payload };
+    case "SET_BOOK":
+      return { ...state, book: action.payload };
     default:
       return state;
   }

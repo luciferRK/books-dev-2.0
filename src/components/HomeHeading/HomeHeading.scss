@@ -1,7 +1,23 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
 
 @mixin header-width {
     width: 59%;
+}
+
+@scroll-timeline header-shrink {
+    source: selector(.book-list-content);
+    orientation: block;
+    scroll-offsets: 0%, 100%; /* start, finish scroll pixels */
+}
+
+@keyframes header-shrink-anim {
+    from {
+        height: 60dvh;
+    }
+    to {
+        height: 70px;
+    }
 }
 
 .home-heading {
@@ -46,6 +62,11 @@
                 }
             }
         }
+
+        position: sticky;
+        animation: header-shrink-anim linear both;
+        animation-timeline: header-shrink;
+        animation-range: 0 300px;
     }
 }
 
@@ -80,5 +101,15 @@
         animation: appearFromTopHomeHeading 0.8s
             cubic-bezier(0.3, 0.42, 0.6, 0.87) forwards;
         overflow: hidden;
+    }
+}
+
+@include media.small {
+    .home-heading {
+        .home-heading-content {
+            .main-heading {
+                font-size: 3.5rem;
+            }
+        }
     }
 }

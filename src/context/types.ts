@@ -24,10 +24,7 @@ export interface Book {
 
 export interface InitialGlobalStateType {
   allBooks: Book[];
-  loading: {
-    home: boolean;
-    book: boolean;
-  };
+  loading: boolean;
   imagesLoading: boolean;
   pageState: "enter" | "exit";
   book: Book;

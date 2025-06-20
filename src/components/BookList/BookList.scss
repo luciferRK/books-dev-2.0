@@ -2,13 +2,17 @@
 
 .book-list {
     .book-list-content {
-        width: 50%;
+        width: 59%;
+        height: 40dvh;
         overflow-y: auto;
         .book {
             width: 5rem;
             height: 5rem;
             background-color: color.$white;
             margin-bottom: 1rem;
+        }
+        &::-webkit-scrollbar {
+            width: 0;
         }
     }
 }
