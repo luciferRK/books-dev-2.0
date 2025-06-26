@@ -1,18 +1,87 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/mixins.scss" as mixin;
 
 .book-list {
     .book-list-content {
         width: 59%;
         height: 40dvh;
         overflow-y: auto;
-        .book {
-            width: 5rem;
-            height: 5rem;
-            background-color: color.$white;
-            margin-bottom: 1rem;
-        }
+        transform: translateY(300%);
+        transition: transform 0.5s ease-in-out;
+        scroll-timeline-name: mixin.$home-page-header-var;
         &::-webkit-scrollbar {
             width: 0;
+        }
+        .books {
+            margin: 2rem 5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8%;
+            row-gap: 2rem;
+        }
+    }
+}
+
+@keyframes content-up {
+    from {
+        transform: translateY(300%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes content-down {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(300%);
+    }
+}
+
+@keyframes book-list-expand {
+    from {
+        height: 40dvh;
+    }
+    to {
+        height: calc(100dvh - 68px);
+    }
+}
+
+@supports (animation-timeline: scroll()) {
+    .idle {
+        .book-list {
+            .book-list-content {
+                @include mixin.home-page-header-shrink-timeline(
+                    book-list-expand
+                );
+            }
+        }
+    }
+}
+
+.enter {
+    .book-list {
+        .book-list-content {
+            animation: content-up 5s cubic-bezier(0.18, 1, 0.22, 1) forwards;
+            animation-delay: 1s;
+        }
+    }
+}
+
+.idle {
+    .book-list {
+        .book-list-content {
+            transform: unset;
+        }
+    }
+}
+
+.exit {
+    .book-list {
+        .book-list-content {
+            animation: content-left 1s cubic-bezier(0.18, 1, 0.22, 1) forwards;
         }
     }
 }

@@ -1,5 +1,8 @@
+@use "../../assets/scss/_mixins.scss" as mixin;
+
 .home {
     width: 100dvw;
     min-height: 100dvh;
     height: 100dvh;
+    timeline-scope: mixin.$home-page-header-var;
 }

@@ -13,7 +13,7 @@ const useGlobalAction = () => {
     dispatch({ type: "SET_LOADING", payload: loading });
   };
 
-  const setPageState = (pageState: "enter" | "exit") => {
+  const setPageState = (pageState: "enter" | "exit" | "idle") => {
     dispatch({ type: "SET_PAGE_STATE", payload: pageState });
   };
 

@@ -14,7 +14,9 @@ const BookCover: React.FC<BookCoverProps> = (props) => {
       className={classNames("book-cover", {
         animated,
       })}
-    ></div>
+    >
+      <div className="book-cover-content"></div>
+    </div>
   );
 };
 

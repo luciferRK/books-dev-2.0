@@ -1,20 +1,33 @@
 @use "../../../assets/scss/_colors.scss" as color;
 
+@mixin book-item-interactable {
+    width: fit-content;
+    cursor: pointer;
+}
+
 .book-item {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
+    width: 28%;
     .cover-image {
+        @include book-item-interactable();
         img {
             height: 12rem;
         }
     }
     .author-name {
+        margin-top: 0.5rem;
+        @include book-item-interactable();
         color: color.$white;
-        font-size: 0.8em;
+        font-size: 0.75em;
     }
     .title {
+        margin-top: 0.6rem;
+        font-size: 1rem;
+        letter-spacing: 0.02rem;
+        @include book-item-interactable();
         color: color.$primary;
         font-weight: bold;
+        max-width: 85%;
     }
 }

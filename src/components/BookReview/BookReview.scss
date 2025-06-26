@@ -4,6 +4,7 @@
     width: 41%;
     min-height: 100dvh;
     overflow-y: auto;
+    z-index: 1;
     .book-review-content {
         transform: translateY(100%);
         padding: 3rem 3rem;
@@ -43,6 +44,14 @@
         .book-review-content {
             animation: disappearToBottomBookReview 0.5s
                 cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        }
+    }
+}
+
+.idle {
+    .book-review {
+        .book-review-content {
+            transform: unset;
         }
     }
 }

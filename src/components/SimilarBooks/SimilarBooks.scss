@@ -54,3 +54,11 @@
         }
     }
 }
+
+.idle {
+    .similar-books {
+        .similar-books-content {
+            transform: unset;
+        }
+    }
+}

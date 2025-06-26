@@ -36,6 +36,8 @@ const Routes = () => {
         if (state.pageState === "exit") {
           setDelayedLocation(location);
           setPageState("enter");
+        } else if (state.pageState === "enter") {
+          setPageState("idle");
         }
       }}
     >

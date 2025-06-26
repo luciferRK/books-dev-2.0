@@ -6,21 +6,22 @@ import SimilarBooks from "../../components/SimilarBooks";
 import BookReview from "../../components/BookReview";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import { useParams } from "react-router-dom";
-import { isEmpty } from "uixtra/utils";
+import { and, isEmpty } from "uixtra/utils";
 import Loading from "../../components/Loading";
 
 const Book: React.FC = () => {
   const { setBook, state } = useGlobalAction();
+  const { allBooks, loading } = state;
   const { bookName = "" } = useParams();
 
   React.useEffect(() => {
-    if (!isEmpty(bookName)) {
-      setBook(state.allBooks.find((book) => book.urlName === bookName) as Book);
+    if (and(!isEmpty(bookName), !loading)) {
+      setBook(allBooks.find((book) => book.urlName === bookName) as Book);
     }
-  }, [bookName]);
+  }, [bookName, loading]);
 
   return (
-    <Loading isIt={state.loading}>
+    <Loading isIt={loading}>
       <div className="book-page">
         <BookCover />
         <BookReview />
