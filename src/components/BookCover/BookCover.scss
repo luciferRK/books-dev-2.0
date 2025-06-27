@@ -4,6 +4,71 @@
     height: 100dvh;
     background-color: color.$secondary;
     .book-cover-content {
+        height: 100%;
+        width: 100%;
+        .image-and-details {
+            display: flex;
+            width: 83%;
+            gap: 2rem;
+            height: 52%;
+            align-items: flex-end;
+            margin: auto;
+            .cover-image {
+                width: fit-content;
+                img {
+                    height: 40dvh;
+                }
+            }
+            .details {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: 40dvh;
+                gap: 1rem;
+                .detail-section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    font-size: 0.7rem;
+                    .heading {
+                        color: color.$offwhite;
+                    }
+                    .list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.4rem;
+                    }
+                }
+            }
+        }
+        .name-and-description {
+            display: flex;
+            flex-direction: column;
+            width: 83%;
+            margin: 1rem auto 0;
+            height: 48%;
+            .author-name {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+            .book-name {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 0.8rem;
+            }
+            .description-list {
+                font-size: 0.7rem;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                column-gap: 5%;
+                .description-item {
+                    width: 47.5%;
+                    flex: 1;
+                }
+            }
+        }
     }
 }
 

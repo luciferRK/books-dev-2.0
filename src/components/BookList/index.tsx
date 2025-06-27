@@ -1,6 +1,6 @@
 import React from "react";
 import "./BookList.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import BookItem from "./BookItem";
 
