@@ -13,6 +13,18 @@ const BookCover: React.FC<BookCoverProps> = (props) => {
   const { state } = useGlobalAction();
   const { book } = state;
 
+  const getDescriptionColumns = (): Array<Array<string>> => {
+    if (book.description.length === 2) {
+      return book.description.map((item) => [item]);
+    }
+    // Flatten all descriptions into a single array
+    const flat = book.description.flat();
+    // Split into at most 2 columns, each with at most 2 items
+    const col1 = flat.slice(0, 2);
+    const col2 = flat.slice(2, 4);
+    return [col1, col2].filter(col => col.length > 0);
+  };
+
   return (
     <div
       className={classNames("book-cover", {
@@ -51,14 +63,16 @@ const BookCover: React.FC<BookCoverProps> = (props) => {
           <div className="author-name">{book.author.name}</div>
           <div className="book-name">{book.name}</div>
           <div className="description-list">
-            {book.description.map((desc) => (
-              <div className="description-item" key={desc}>
-                {desc}
-              </div>
-            ))}
-            {book.description.map((desc) => (
-              <div className="description-item" key={desc}>
-                {desc}
+            {getDescriptionColumns().map((column) => (
+              <div
+                className="description-column"
+                key={column[0] + new Date().getTime()}
+              >
+                {column.map((desc) => (
+                  <div className="description-item" key={desc}>
+                    {desc}
+                  </div>
+                ))}
               </div>
             ))}
           </div>

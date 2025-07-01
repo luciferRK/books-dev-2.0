@@ -2,6 +2,7 @@
 
 .book-cover {
     height: 100dvh;
+    /* overflow: hidden; */
     background-color: color.$secondary;
     .book-cover-content {
         height: 100%;
@@ -44,8 +45,9 @@
         .name-and-description {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             width: 83%;
-            margin: 1rem auto 0;
+            margin: auto;
             height: 48%;
             .author-name {
                 font-size: 1.1rem;
@@ -59,13 +61,15 @@
             .description-list {
                 font-size: 0.7rem;
                 display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-                column-gap: 5%;
-                .description-item {
+                gap: 5%;
+                .description-column {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
                     width: 47.5%;
-                    flex: 1;
+                    .description-item {
+                        width: 100%;
+                    }
                 }
             }
         }
