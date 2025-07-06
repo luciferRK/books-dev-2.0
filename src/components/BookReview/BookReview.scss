@@ -1,57 +1,59 @@
 @use "../../assets/scss/_colors.scss";
 
 .book-review {
-    width: 41%;
-    min-height: 100dvh;
-    overflow-y: auto;
-    z-index: 1;
-    .book-review-content {
-        transform: translateY(100%);
-        padding: 3rem 3rem;
-        height: 100%;
-    }
+	width: 41%;
+	min-height: 100vh;
+	z-index: 1;
+	.book-review-content {
+		transform: translateY(100%);
+		padding: 3rem 3rem;
+		overflow-y: auto;
+		height: 100%;
+	}
 }
 
 @keyframes appearFromBottomBookReview {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
 }
 
 @keyframes disappearToBottomBookReview {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(100%);
-    }
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100%);
+	}
 }
 
 .enter {
-    .book-review {
-        .book-review-content {
-            animation: appearFromBottomBookReview 0.7s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
-    }
+	.book-review {
+		.book-review-content {
+			overflow-y: hidden;
+			animation: appearFromBottomBookReview 0.7s cubic-bezier(0.18, 1, 0.22, 1)
+				forwards;
+		}
+	}
 }
 
 .exit {
-    .book-review {
-        .book-review-content {
-            animation: disappearToBottomBookReview 0.5s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
-    }
+	.book-review {
+		.book-review-content {
+			overflow-y: hidden;
+			animation: disappearToBottomBookReview 0.5s cubic-bezier(0.18, 1, 0.22, 1)
+				forwards;
+		}
+	}
 }
 
 .idle {
-    .book-review {
-        .book-review-content {
-            transform: unset;
-        }
-    }
+	.book-review {
+		.book-review-content {
+			transform: unset;
+		}
+	}
 }

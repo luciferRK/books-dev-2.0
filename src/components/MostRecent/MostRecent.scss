@@ -1,43 +1,42 @@
 @use "../../assets/scss/_colors.scss" as color;
 
 .most-recent-read {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 41%;
-    height: 100dvh;
-    background-color: color.$secondary;
-    z-index: 1;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 41%;
+	height: 100vh;
+	background-color: color.$secondary;
+	z-index: 1;
 }
 
 @keyframes vanishRightMostRecent {
-    0% {
-        width: 41%;
-    }
-    100% {
-        width: 0;
-    }
+	0% {
+		width: 41%;
+	}
+	100% {
+		width: 0;
+	}
 }
 
 @keyframes appearFromRightMostRecent {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 41%;
-    }
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 41%;
+	}
 }
 
 .exit {
-    .most-recent-read {
-        animation: vanishRightMostRecent 1s cubic-bezier(0.18, 1, 0.22, 1)
-            forwards;
-    }
+	.most-recent-read {
+		animation: vanishRightMostRecent 1s cubic-bezier(0.18, 1, 0.22, 1) forwards;
+	}
 }
 
 .enter {
-    .most-recent-read {
-        animation: appearFromRightMostRecent 0.8s
-            cubic-bezier(0.17, 0.67, 0.6, 0.87) forwards;
-    }
+	.most-recent-read {
+		animation: appearFromRightMostRecent 0.8s
+			cubic-bezier(0.17, 0.67, 0.6, 0.87) forwards;
+	}
 }

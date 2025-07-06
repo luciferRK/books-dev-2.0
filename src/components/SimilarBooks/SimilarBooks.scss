@@ -1,64 +1,88 @@
 @use "../../assets/scss/_colors.scss" as color;
 
 .similar-books {
-    float: right;
-    width: 18%;
-    height: 100dvh;
-    background-color: color.$primary;
-    .similar-books-content {
-        width: 100%;
-        height: 100%;
-        padding: 3rem 2rem;
-        transform: translateX(100%);
-    }
+	float: right;
+	width: 18%;
+	height: 100vh;
+	background-color: color.$primary;
+	.similar-books-content {
+		width: 100%;
+		height: 100%;
+		padding: 2rem 2rem;
+		transform: translateX(100%);
+		.heading {
+			margin-bottom: 0.75rem;
+		}
+		.book-list {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			.book-item {
+				width: 100%;
+				.cover-image {
+					img {
+						height: 9rem;
+					}
+				}
+				.author-name {
+					margin-top: 0.3rem;
+				}
+				.title {
+					color: color.$white;
+					margin-top: 0.3rem;
+					font-size: 0.75rem;
+				}
+			}
+		}
+	}
 }
 
 .skeleton {
-    position: absolute;
-    right: 0;
-    top: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 @keyframes appearFromRightSimilar {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
 }
 
 @keyframes disappearToRightSimilar {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(100%);
-    }
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(100%);
+	}
 }
 
 .enter {
-    .similar-books {
-        .similar-books-content {
-            animation: appearFromRightSimilar 0.8s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
-    }
+	.similar-books {
+		.similar-books-content {
+			animation: appearFromRightSimilar 0.8s cubic-bezier(0.18, 1, 0.22, 1)
+				forwards;
+		}
+	}
 }
 
 .exit {
-    .similar-books {
-        .similar-books-content {
-            animation: disappearToRightSimilar 0.8s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
-    }
+	.similar-books {
+		.similar-books-content {
+			animation: disappearToRightSimilar 0.8s cubic-bezier(0.18, 1, 0.22, 1)
+				forwards;
+		}
+	}
 }
 
 .idle {
-    .similar-books {
-        .similar-books-content {
-            transform: unset;
-        }
-    }
+	.similar-books {
+		.similar-books-content {
+			transform: unset;
+		}
+	}
 }
