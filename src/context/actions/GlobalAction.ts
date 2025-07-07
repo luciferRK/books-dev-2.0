@@ -88,7 +88,7 @@ const useGlobalAction = () => {
 	useEffect(() => {
 		if (state.allBooks.length === 0) {
 			setLoading(true);
-			fetch("/files/books.json")
+			fetch("/assets/files/books.json")
 				.then((res) => res.json())
 				.then((data) => {
 					setAllBooks(data);

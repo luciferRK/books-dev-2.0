@@ -31,4 +31,4 @@ export const SAMPLE_BOOK: Book = {
   },
 };
 
-export const BOOK_COVER_PREFIX = "/images/books/";
+export const BOOK_COVER_PREFIX = "/assets/images/books/";
