@@ -32,3 +32,14 @@ export const SAMPLE_BOOK: Book = {
 };
 
 export const BOOK_COVER_PREFIX = "/assets/images/books/";
+
+export const COLORS = {
+  background: "#1d1d1d",
+  primary: "#bc4021",
+  secondary: "#188c8c",
+  white: "#ffffff",
+  black: "#000000",
+  offwhite: "#d9d9d9",
+};
+
+export const QUOTE_PREFIX = "quote:";

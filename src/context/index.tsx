@@ -8,6 +8,7 @@ const initialState: InitialGlobalStateType = {
   imagesLoading: true,
   pageState: "enter",
   book: SAMPLE_BOOK,
+  favBook: SAMPLE_BOOK,
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({
@@ -33,6 +34,8 @@ const globalContextReducer = (
       return { ...state, imagesLoading: action.payload };
     case "SET_BOOK":
       return { ...state, book: action.payload };
+    case "SET_FAV_BOOK":
+      return { ...state, favBook: action.payload };
     default:
       return state;
   }

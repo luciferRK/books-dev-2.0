@@ -28,6 +28,7 @@ export interface InitialGlobalStateType {
   imagesLoading: boolean;
   pageState: "enter" | "exit" | "idle";
   book: Book;
+  favBook: Book;
 }
 
 export interface GlobalContextType {

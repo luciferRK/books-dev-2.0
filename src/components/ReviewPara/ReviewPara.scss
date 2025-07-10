@@ -1,0 +1,20 @@
+@use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_font.scss";
+
+.review-paragraph {
+    line-height: 1.3rem;
+    .review-first-char {
+        font-size: 5rem;
+        float: left;
+        line-height: 1;
+        margin-right: 8px;
+        color: color.$primary;
+        font-family: "Anton";
+    }
+}
+
+.review-paragraph.quote {
+    font-family: "BrandonGrotesque", sans-serif;
+    font-size: 1.6rem;
+    color: color.$primary;
+}
