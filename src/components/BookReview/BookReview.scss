@@ -1,97 +1,105 @@
 @use "../../assets/scss/_colors.scss" as color;
 
 .book-review {
-    width: 41%;
-    min-height: 100vh;
-    z-index: 1;
-    .book-review-content {
-        transform: translateY(100%);
-        padding: 3rem 3rem;
-        overflow-y: auto;
-        height: 100vh;
-        .top-section {
-            display: flex;
-            justify-content: space-between;
-            /* align-items: flex-start; */
-            align-items: center;
-            .back {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                text-decoration: none;
-                color: color.$primary;
-                .icon {
-                    width: 1.2rem;
-                    height: 1.2rem;
-                    fill: color.$primary;
-                }
-            }
-            .rating {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                justify-content: flex-end;
-                .star {
-                    height: 2.75em;
-                    width: fit-content;
-                }
-                /* .half-star {
-                    transform: scaleX(-1);
-                } */
-            }
-        }
-        .review {
-            margin-top: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-        }
+  width: 41%;
+  min-height: 100vh;
+  z-index: 1;
+  .book-review-content {
+    transform: translateY(100%);
+    padding: 3rem 3rem;
+    overflow-y: auto;
+    height: 100vh;
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: color.$background;
     }
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: color.$background;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: color.$primary;
+      border-radius: 5px;
+    }
+    .top-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: color.$primary;
+        .icon {
+          width: 1.2rem;
+          height: 1.2rem;
+          fill: color.$primary;
+        }
+      }
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: flex-end;
+        .star {
+          height: 2.75em;
+          width: fit-content;
+        }
+      }
+    }
+    .review {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+    }
+  }
 }
 
 @keyframes appearFromBottomBookReview {
-    0% {
-        transform: translateY(100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes disappearToBottomBookReview {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(100%);
-    }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 .enter {
-    .book-review {
-        .book-review-content {
-            overflow-y: hidden;
-            animation: appearFromBottomBookReview 0.7s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
+  .book-review {
+    .book-review-content {
+      overflow-y: hidden;
+      animation: appearFromBottomBookReview 0.7s cubic-bezier(0.18, 1, 0.22, 1)
+        forwards;
     }
+  }
 }
 
 .exit {
-    .book-review {
-        .book-review-content {
-            overflow-y: hidden;
-            animation: disappearToBottomBookReview 0.5s
-                cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        }
+  .book-review {
+    .book-review-content {
+      overflow-y: hidden;
+      animation: disappearToBottomBookReview 0.5s cubic-bezier(0.18, 1, 0.22, 1)
+        forwards;
     }
+  }
 }
 
 .idle {
-    .book-review {
-        .book-review-content {
-            transform: unset;
-        }
+  .book-review {
+    .book-review-content {
+      transform: unset;
     }
+  }
 }

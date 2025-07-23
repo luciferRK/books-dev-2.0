@@ -16,7 +16,6 @@ const BookList: React.FC<BookListProps> = (props) => {
 
   const favRemovedList = useMemo(() => {
     if (allBooks.length > 0) {
-      console.log(favBook);
       return allBooks.filter((book) => book.urlName !== favBook.urlName);
     }
     return [];

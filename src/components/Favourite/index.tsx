@@ -3,11 +3,18 @@ import "./Favourite.scss";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
+import { BrushMaskButton } from "../Button";
 
 const Favourite: React.FC = () => {
   const { state, setBook } = useGlobalAction();
   const { favBook } = state;
   const navigate = useNavigate();
+
+  const description = useMemo(
+    () => favBook.description.slice(0, 2),
+    [favBook.description]
+  );
 
   return (
     <div className="favourite">
@@ -29,18 +36,23 @@ const Favourite: React.FC = () => {
             <div className="left book-name">
               <div className="author-name">{favBook.author.name}</div>
               <div className="book-name">{favBook.name}</div>
-              <button
+              <BrushMaskButton
                 className="read-review"
-                type="button"
+                labelClassName="read-review-label"
                 onClick={() => {
                   setBook(favBook);
                   navigate(`/${favBook.urlName}`);
                 }}
-              >
-                Read Review
-              </button>
+                label="Read Review"
+              />
             </div>
-            <div className="right book-description"></div>
+            <div className="right book-description">
+              {description.map((desc) => (
+                <div className="each-description" key={desc}>
+                  {desc}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,68 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+@keyframes hoverButtonMaskAnimation {
+  from {
+    -webit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+@keyframes buttonMaskAnimation {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+
+.custom-button {
+  position: relative;
+  width: fit-content;
+  transition: 0.5s;
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+}
+
+.brush-mask-button {
+  .label {
+    background-color: color.$white;
+    color: color.$black;
+  }
+  button {
+    background-color: color.$secondary;
+    color: color.$white;
+    -webkit-mask: url("/assets/images/button-animation-brush-mask.png");
+    mask: url("/assets/images/button-animation-brush-mask.png");
+    mask-size: 3000% 100%;
+    -webkit-mask-size: 3000% 100%;
+    animation: buttonMaskAnimation 0.7s steps(29) forwards;
+    -webkit-animation: buttonMaskAnimation 0.7s steps(29) forwards;
+    &:hover {
+      animation: hoverButtonMaskAnimation 0.7s steps(29) forwards;
+      -webkit-animation: hoverButtonMaskAnimation 0.7s steps(29) forwards;
+    }
+  }
+}

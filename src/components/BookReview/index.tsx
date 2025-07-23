@@ -15,7 +15,6 @@ import ReviewPara from "../ReviewPara";
 const BookReview: React.FC = () => {
   const { state } = useGlobalAction();
   const { book } = state;
-  console.log(book);
 
   const fullStar: number = useMemo(() => {
     return Number(Number.parseInt(book.rating.toString()));

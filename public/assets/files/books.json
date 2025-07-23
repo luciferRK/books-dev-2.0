@@ -8,6 +8,40 @@
   ],
   "allBooks": [
     {
+      "urlName": "morning-star",
+      "name": "Morning Star",
+      "image": "morning_star.jpg",
+      "rating": 5,
+      "description": [
+        "Darrow would have lived in peace, but his enemies brought him war. The Gold overlords demanded his obedience, hanged his wife, and enslaved his people. But Darrow is determined to fight back. Risking everything to transform himself and breach Gold society, Darrow has battled to survive the cutthroat rivalries that breed Society’s mightiest warriors, climbed the ranks, and waited patiently to unleash the revolution that will tear the hierarchy apart from within.",
+        "Finally, the time has come.",
+        "But devotion to honor and hunger for vengeance run deep on both sides. Darrow and his comrades-in-arms face powerful enemies without scruple or mercy. Among them are some Darrow once considered friends. To win, Darrow will need to inspire those shackled in darkness to break their chains, unmake the world their cruel masters have built, and claim a destiny too long denied—and too glorious to surrender."
+      ],
+      "review": [
+        "Okay, wow. Morning Star by Pierce Brown totally delivered everything I was hoping for after that absolutely devastating cliffhanger in Golden Son. Honestly, I grabbed this book the second I finished the last one, because I couldn’t handle not knowing what happened next. It kicks off with the same relentless pace and emotional intensity, immediately throwing you right back into the chaos and tension.",
+        "What I loved the most about Morning Star is how it picks up on all the threads from Red Rising and Golden Son. The stakes somehow get even higher. I’d thought the last book put the characters through hell, but this one finds a way to up the ante. There’s this constant sense of waiting, almost holding your breath, as you turn each page, just to see if any relief or victory will come for Darrow and his allies. The action sequences are so sharp and the emotional punches are honestly rough at times, there were plenty of moments where my heart felt like it stopped for a second, or I had to pause just to process what was happening.",
+        "What really stood out to me was how the book deepens the world even further, showing the real consequences of every decision, from the stunning betrayals to those rare moments of hope. The cast of characters evolves in such unexpected directions; some relationships become fiercer, while others get complicated in ways I didn’t see coming. Brown’s ability to balance explosive action with those quieter, gut-wrenching moments of self-doubt made their journeys feel all the more real and sometimes maddeningly so!",
+        "Every time I thought I could predict where the story was going, Brown threw in another surprise. The sense of scale is massive, but it never feels impersonal. There are huge battles, sure, but those gut-churning, smaller confrontations are what really hit home. It’s the kind of book where you can feel the emotional and physical exhaustion right along with the characters, but you push through because you just have to know how it all ends.",
+        "The payoff at the end was so satisfying for me. After all the heartbreak and tension, I loved how things wrapped up. But at the same time, I’m left with so many questions, and honestly a bit nervous about what might happen in Iron Gold. It’s that awesome feeling where you’re content and exhausted, but you desperately want to keep going.",
+        "If you liked Red Rising and Golden Son, Morning Star is a must-read. It maintains the breakneck pace, the emotional complexity, and the bold world-building that makes this series so addicting. I genuinely can’t wait to see what Pierce Brown does next."
+      ],
+      "category": "read",
+      "genre": ["Sci-Fi", "Dystopia", "Action"],
+      "author": {
+        "name": "Pierce Brown",
+        "instagram": "https://www.instagram.com/piercebrownofficial/",
+        "twitter": "https://x.com/Pierce_Brown"
+      },
+      "buyLinks": {
+        "amazon": "https://amzn.in/d/4xzhBdq",
+        "amazonAudio": "https://amzn.in/d/4xzhBdq"
+      },
+      "dates": {
+        "started": "2025-06-06",
+        "finished": "2025-07-17"
+      }
+    },
+    {
       "urlName": "golden-son",
       "name": "Golden Son",
       "image": "golden_son.jpg",
