@@ -8,7 +8,7 @@
         float: left;
         line-height: 1;
         margin-right: 8px;
-        color: color.$primary;
+        color: color.$primary-text;
         font-family: "Anton";
     }
 }
@@ -16,5 +16,6 @@
 .review-paragraph.quote {
     font-family: "BrandonGrotesque", sans-serif;
     font-size: 1.6rem;
-    color: color.$primary;
+    color: color.$primary-text;
+    line-height: 1.7rem;
 }

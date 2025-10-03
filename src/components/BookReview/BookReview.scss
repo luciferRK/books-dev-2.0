@@ -6,7 +6,7 @@
   z-index: 1;
   .book-review-content {
     transform: translateY(100%);
-    padding: 3rem 3rem;
+    padding: 3em 3em;
     overflow-y: auto;
     height: 100vh;
     &::-webkit-scrollbar {
@@ -28,19 +28,19 @@
       .back {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.5em;
         text-decoration: none;
-        color: color.$primary;
+        color: color.$primary-text;
         .icon {
-          width: 1.2rem;
-          height: 1.2rem;
+          width: 1.2em;
+          height: 1.2em;
           fill: color.$primary;
         }
       }
       .rating {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.5em;
         justify-content: flex-end;
         .star {
           height: 2.75em;
@@ -49,11 +49,11 @@
       }
     }
     .review {
-      margin-top: 2.5rem;
+      font-size: 0.85em;
+      margin-top: 2.9em;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      font-size: 0.85rem;
+      gap: 1.75em;
     }
   }
 }

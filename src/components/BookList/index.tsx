@@ -3,6 +3,7 @@ import "./BookList.scss";
 import { useNavigate } from "react-router-dom";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import BookItem from "../BookItem";
+import { and } from "uixtra/utils";
 
 interface BookListProps {
   homeHeadingRef: React.RefObject<HTMLDivElement>;
@@ -14,9 +15,9 @@ const BookList: React.FC<BookListProps> = (props) => {
   const { allBooks, favBook } = state;
   const navigate = useNavigate();
 
-  const favRemovedList = useMemo(() => {
+  const favRemovedReadList = useMemo(() => {
     if (allBooks.length > 0) {
-      return allBooks.filter((book) => book.urlName !== favBook.urlName);
+      return allBooks.filter((book) => and(book.urlName !== favBook.urlName, book.category !== 'toread'));
     }
     return [];
   }, [allBooks, favBook.urlName]);
@@ -25,7 +26,7 @@ const BookList: React.FC<BookListProps> = (props) => {
     <div className="book-list">
       <div className="book-list-content">
         <div className="books">
-          {favRemovedList.map((book) => (
+          {favRemovedReadList.map((book) => (
             <BookItem
               book={book}
               key={book.urlName}
