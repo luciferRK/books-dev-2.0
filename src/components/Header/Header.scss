@@ -1,155 +1,23 @@
 @use "../../assets/scss/_colors.scss" as color;
-@use "../../assets/scss/_media.scss" as media;
-@use "../../assets/scss/_mixins.scss" as mixin;
 
-@mixin header-width {
-	width: 59%;
-}
-
-.home-heading {
-	position: relative;
-	width: 100vw;
-	max-height: 60vh;
-	background-color: color.$primary;
-	overflow: hidden;
-	z-index: -1;
-	.home-heading-content {
-		display: flex;
-		justify-content: space-between;
-		padding: 4rem 4rem;
-		height: 100%;
-		@include header-width();
-		.main-heading {
-			margin: 0;
-			font-size: 4.5rem;
-			width: 60%;
-			font-family: "Anton", sans-serif;
-			white-space: wrap;
-		}
-		.expanded-options {
-			margin: 5% 10% 0 0;
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			.option {
-				font-family: "Inter", sans-serif;
-				font-weight: 600;
-				position: relative;
-			}
-			.option~.selected {
-				&:before {
-					content: "";
-					position: absolute;
-					left: -0.7rem;
-					width: 100%;
-					height: 1.2rem;
-					width: 0.2rem;
-					background-color: color.$white;
-				}
-			}
-		}
-	}
-}
-
-@keyframes vanishUpHomeHeading {
-	100% {
-		height: 0;
-	}
-}
-
-@keyframes appearFromTopHomeHeading {
-	0% {
-		height: 0;
-	}
-	100% {
-		height: 60vh;
-	}
-}
-
-.exit {
-	.home-heading {
-		animation: vanishUpHomeHeading 0.8s cubic-bezier(0.18, 1, 0.22, 1) forwards;
-	}
-}
-
-.enter {
-	.home-heading {
-		animation: appearFromTopHomeHeading 0.8s cubic-bezier(0.3, 0.42, 0.6, 0.87) forwards;
-	}
-}
-
-@keyframes home-heading-shrink-animation {
-	from {
-		height: 60vh;
-	}
-	to {
-		height: 68px;
-	}
-}
-
-@keyframes home-heading-options-vanish {
-	from {
-		opacity: 1;
-	}
-	80% {
-		opacity: 0;
-	}
-	to {
-		opacity: 0;
-	}
-}
-
-@keyframes home-heading-options-move {
-	from {
-		transform: translateY(0);
-		gap: 2rem;
-	}
-	to {
-		transform: translateY(-78px);
-		margin: 0 10% 0 0;
-		gap: 0;
-	}
-}
-
-@supports (animation-timeline: scroll()) {
-	.idle {
-		.home-heading {
-			@include mixin.home-page-header-shrink-timeline(home-heading-shrink-animation);
-			.home-heading-content {
-				.expanded-options {
-					@include mixin.home-page-header-shrink-timeline(home-heading-options-move);
-				}
-				.option:not(.selected) {
-					@include mixin.home-page-header-shrink-timeline(home-heading-options-vanish);
-				}
-			}
-		}
-	}
-}
-
-@include media.small {
-	.home-heading {
-		.home-heading-content {
-			.main-heading {
-				font-size: 3.5rem;
-			}
-		}
-	}
-}
-
-@media only screen and (min-width: 1500px) {
-	.home-heading {
-		.home-heading-content {
-			padding: 4rem 7rem;
-			align-items: center;
-			.main-heading {
-				width: 50%;
-			}
-			.expanded-options {
-				margin-top: 10%;
-				align-self: flex-start;
-			}
-			
-		}
-	}
+.main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1em 2em;
+    width: 59%;
+    .logo {
+        width: 2em;
+        height: 2em;
+        border-radius: 15px;
+        padding: 0.3em;
+        position: relative;
+        z-index: 101010;
+        background-color: color.$background;
+    }
+    .options {
+        .option {
+            z-index: 1;
+        }
+    }
 }

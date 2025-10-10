@@ -2,9 +2,9 @@
 @use "../../assets/scss/_font.scss";
 
 .review-paragraph {
-    line-height: 1.3rem;
+    line-height: 1.54em;
     .review-first-char {
-        font-size: 5rem;
+        font-size: 5.9em;
         float: left;
         line-height: 1;
         margin-right: 8px;
@@ -15,7 +15,7 @@
 
 .review-paragraph.quote {
     font-family: "BrandonGrotesque", sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.88em;
     color: color.$primary-text;
-    line-height: 1.7rem;
+    line-height: 1.06em;
 }
