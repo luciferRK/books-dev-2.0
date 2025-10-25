@@ -1,4 +1,5 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_mixins.scss" as mixin;
 
 .book-cover {
     height: 100vh;
@@ -118,6 +119,9 @@
     top: 0;
     overflow: hidden;
     z-index: 1010;
+    @include mixin.phone-css {
+        /* display: none; */
+    }
 }
 
 .book-cover:not(.animated) {

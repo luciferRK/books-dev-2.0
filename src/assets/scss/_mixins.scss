@@ -5,3 +5,9 @@
 }
 
 $home-page-header-var: --header-shrink-timeline;
+
+@mixin phone-css {
+    @media only screen and (max-width: 450px) {
+        @content;
+    }
+}

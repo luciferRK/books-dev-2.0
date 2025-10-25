@@ -1,117 +1,122 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_mixins.scss" as mixin;
 
 $panel-width: 41vw;
 
 .favourite {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: $panel-width;
-  height: 100vh;
-  background-color: color.$secondary;
-  z-index: 1;
-  .favourite-content {
-    padding: 2em 2.5em 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
     width: $panel-width;
-    overflow: hidden;
-    .section {
-      display: flex;
-      .left {
-        width: 38%;
-        width: calc($panel-width * 0.38);
-      }
-      .right {
-        width: 55%;
-      }
-    }
-    .top-section {
-      height: 48%;
-      align-items: flex-start;
-      .heading {
-        font-family: "Anton";
-        font-size: 1em;
-      }
-      .cover-image {
+    height: 100vh;
+    background-color: color.$secondary;
+    z-index: 1;
+    .favourite-content {
+        padding: 2em 2.5em 0;
         height: 100%;
-        img {
-          height: 100%;
-        }
-      }
-    }
-    .bottom-section {
-      max-height: 45%;
-      display: flex;
-      margin-top: 3em;
-      .bottom-section-content {
-        width: $panel-width;
         display: flex;
-        gap: calc($panel-width * 0.03);
-        & > .book-name {
-          width: 35%;
-          width: calc($panel-width * 0.35);
-          .author-name {
-            font-size: 1em;
-            margin-bottom: 0.5em;
-          }
-          & > .book-name {
-            font-size: 2.2em;
-            font-weight: bold;
-            margin-bottom: 0.35em;
-          }
-          .read-review-label {
-            border: 1px solid color.$white;
-            font-size: 0.8em;
-          }
-          .read-review {
-            cursor: pointer;
-            font-size: 0.8em;
-            border: 1px solid color.$white;
-          }
+        flex-direction: column;
+        justify-content: center;
+        width: $panel-width;
+        overflow: hidden;
+        .section {
+            display: flex;
+            .left {
+                width: 38%;
+                width: calc($panel-width * 0.38);
+            }
+            .right {
+                width: 55%;
+            }
         }
-        .book-description {
-          overflow: hidden;
-          display: flex;
-          font-size: 0.75em;
-          flex-direction: column;
-          gap: 1.3em;
-          margin-bottom: 1.3em;
+        .top-section {
+            height: 48%;
+            align-items: flex-start;
+            .heading {
+                font-family: "Anton";
+                font-size: 1em;
+            }
+            .cover-image {
+                height: 100%;
+                img {
+                    height: 100%;
+                }
+            }
         }
-      }
+        .bottom-section {
+            max-height: 45%;
+            display: flex;
+            margin-top: 3em;
+            .bottom-section-content {
+                width: $panel-width;
+                display: flex;
+                gap: calc($panel-width * 0.03);
+                & > .book-name {
+                    width: 35%;
+                    width: calc($panel-width * 0.35);
+                    .author-name {
+                        font-size: 1em;
+                        margin-bottom: 0.5em;
+                    }
+                    & > .book-name {
+                        font-size: 2.2em;
+                        font-weight: bold;
+                        margin-bottom: 0.35em;
+                    }
+                    .read-review-label {
+                        border: 1px solid color.$white;
+                        font-size: 0.8em;
+                    }
+                    .read-review {
+                        cursor: pointer;
+                        font-size: 0.8em;
+                        border: 1px solid color.$white;
+                    }
+                }
+                .book-description {
+                    overflow: hidden;
+                    display: flex;
+                    font-size: 0.75em;
+                    flex-direction: column;
+                    gap: 1.3em;
+                    margin-bottom: 1.3em;
+                }
+            }
+        }
     }
-  }
+    @include mixin.phone-css {
+        display: none;
+    }
 }
 
 @keyframes vanishRightMostRecent {
-  0% {
-    width: 41%;
-  }
-  100% {
-    width: 0;
-  }
+    0% {
+        width: 41%;
+    }
+    100% {
+        width: 0;
+    }
 }
 
 @keyframes appearFromRightMostRecent {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 41%;
-  }
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 41%;
+    }
 }
 
 .exit {
-  .favourite {
-    animation: vanishRightMostRecent 1s cubic-bezier(0.18, 1, 0.22, 1) forwards;
-  }
+    .favourite {
+        animation: vanishRightMostRecent 1s cubic-bezier(0.18, 1, 0.22, 1)
+            forwards;
+    }
 }
 
 .enter {
-  .favourite {
-    animation: appearFromRightMostRecent 0.8s
-      cubic-bezier(0.17, 0.67, 0.6, 0.87) forwards;
-  }
+    .favourite {
+        animation: appearFromRightMostRecent 0.8s
+            cubic-bezier(0.17, 0.67, 0.6, 0.87) forwards;
+    }
 }
