@@ -6,11 +6,13 @@ import "./App.scss";
 import Routes from "./components/Routes";
 import AllContextProvider from "./context/AllContextProvider";
 import Header from "./components/Header";
+import ViewportWatcher from "./components/ViewportWatcher";
 
 function App() {
   return (
     <BrowserRouter>
       <AllContextProvider>
+        <ViewportWatcher />
         <Header />
         <Routes />
       </AllContextProvider>

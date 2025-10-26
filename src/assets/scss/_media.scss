@@ -11,7 +11,25 @@
 }
 
 @mixin small {
-    @media only screen and (max-width: 1250px) {
+    @media only screen and (min-width: 900px) and (max-width: 1250px) {
+        @content;
+    }
+}
+
+@mixin phone-css {
+    @media only screen and (max-width: 450px) {
+        @content;
+    }
+}
+
+@mixin min-width($minWidth) {
+    @media only screen and (min-width: $minWidth) {
+        @content;
+    }
+}
+
+@mixin max-width($maxWidth) {
+    @media only screen and (max-wdith: $maxWidth) {
         @content;
     }
 }

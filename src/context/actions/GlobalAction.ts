@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import { GlobalContext } from "..";
 import type { Book } from "../types";
 import { getProperty, or } from "uixtra/utils";
 import { SAMPLE_BOOK } from "../../utils/constants";
 import { getRandomInclusive } from "../../utils";
+import { GlobalContext } from "../contexts";
 
 const useGlobalAction = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -30,6 +30,10 @@ const useGlobalAction = () => {
 
   const setFavBook = (book: Book) => {
     dispatch({ type: "SET_FAV_BOOK", payload: book });
+  };
+
+  const setMobileView = (value: boolean) => {
+    dispatch({ type: "SET_MOBILE_VIEW", payload: value });
   };
 
   const getSimilarBooks = (book: Book): Array<Book> => {
@@ -134,6 +138,7 @@ const useGlobalAction = () => {
     setImagesLoading,
     setBook,
     getSimilarBooks,
+    setMobileView,
   };
 };
 

@@ -1,16 +1,17 @@
 @use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
 
 .home {
-	width: 100vw;
-	min-height: 100vh;
-	height: 100vh;
-	timeline-scope: mixin.$home-page-header-var;
-	overflow: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    timeline-scope: mixin.$home-page-header-var;
+    overflow: hidden;
 }
 
-@media only screen and (max-width: 450px) {
-	.home {
-		display: flex;
-		flex-direction: column;
-	}
+@include media.max-width(450px) {
+    .home {
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -1,5 +1,5 @@
 @use "../../assets/scss/_colors.scss" as color;
-@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
 
 .similar-books {
     float: right;
@@ -42,7 +42,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    @include mixin.phone-css {
+    @include media.phone-css {
         display: none;
     }
 }

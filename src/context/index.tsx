@@ -1,20 +1,6 @@
 import React from "react";
-import { type GlobalContextType, type InitialGlobalStateType } from "./types";
-import { SAMPLE_BOOK } from "../utils/constants";
-
-const initialState: InitialGlobalStateType = {
-  allBooks: [],
-  loading: true,
-  imagesLoading: true,
-  pageState: "enter",
-  book: SAMPLE_BOOK,
-  favBook: SAMPLE_BOOK,
-};
-
-export const GlobalContext = React.createContext<GlobalContextType>({
-  state: initialState,
-  dispatch: () => {},
-});
+import { type InitialGlobalStateType } from "./types";
+import { GlobalContext, initialStateGlobal } from "./contexts";
 
 const globalContextReducer = (
   state: InitialGlobalStateType,
@@ -36,6 +22,8 @@ const globalContextReducer = (
       return { ...state, book: action.payload };
     case "SET_FAV_BOOK":
       return { ...state, favBook: action.payload };
+    case "SET_MOBILE_VIEW":
+      return { ...state, isMobileView: action.payload };
     default:
       return state;
   }
@@ -45,7 +33,7 @@ const GlobalContextProvider = (props: React.PropsWithChildren) => {
   const { children } = props;
   const [state, dispatch] = React.useReducer(
     globalContextReducer,
-    initialState,
+    initialStateGlobal,
   );
 
   return (

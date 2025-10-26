@@ -1,5 +1,6 @@
 @use "../../assets/scss/_colors.scss" as color;
-@use "../../assets/scss/mixins.scss" as mixin;
+@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
 
 .book-list {
     .book-list-content {
@@ -18,13 +19,6 @@
             flex-wrap: wrap;
             gap: 8%;
             row-gap: 2em;
-        }
-        @include mixin.phone-css {
-            width: 100%;
-            .books {
-                margin: 1.5em 1em;
-                justify-content: space-around;
-            }
         }
     }
 }
@@ -49,10 +43,31 @@
 
 @keyframes book-list-expand {
     from {
-        height: 40vh;
+        height: 40dvh;
     }
     to {
         height: calc(100dvh - 68px);
+    }
+}
+
+@include media.phone-css {
+    .book-list {
+        .book-list-content {
+            height: 75vh;
+            width: 100%;
+            .books {
+                margin: 1.5em 1em;
+                justify-content: space-around;
+            }
+        }
+    }
+    @keyframes book-list-expand {
+        from {
+            height: 75dvh;
+        }
+        to {
+            height: calc(100dvh - 68px);
+        }
     }
 }
 

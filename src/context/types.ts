@@ -1,3 +1,9 @@
+export type ExpandedMenuOptionValue =
+  | "new"
+  | "reviews"
+  | "genres"
+  | "discovery";
+
 export interface Book {
   urlName: string;
   name: string;
@@ -29,10 +35,23 @@ export interface InitialGlobalStateType {
   pageState: "enter" | "exit" | "idle";
   book: Book;
   favBook: Book;
+  isMobileView: boolean;
 }
 
 export interface GlobalContextType {
   state: InitialGlobalStateType;
+  dispatch: React.Dispatch<{
+    type: string;
+    payload?: any;
+  }>;
+}
+
+export interface InitialHomeStateType {
+  activePage: ExpandedMenuOptionValue;
+}
+
+export interface HomeContextType {
+  state: InitialHomeStateType;
   dispatch: React.Dispatch<{
     type: string;
     payload?: any;
