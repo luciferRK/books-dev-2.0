@@ -15,19 +15,10 @@ const ViewportWatcher: React.FC = () => {
 
     setMobileView(mediaQuery.matches);
 
-    try {
-      mediaQuery.addEventListener("change", onChange);
+    mediaQuery.addEventListener("change", onChange);
 
-      return () => mediaQuery.removeEventListener("change", onChange);
-    } catch {
-      // fallback for legacy API
-      mediaQuery.addListener(onChange);
-
-      return () => {
-        mediaQuery.removeListener(onChange);
-      };
-    }
-  }, [setMobileView]);
+    return () => mediaQuery.removeEventListener("change", onChange);
+  }, []);
 
   return <></>;
 };
