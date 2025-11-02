@@ -1,14 +1,6 @@
 @use "../../assets/scss/_colors.scss" as color;
 @use "../../assets/scss/_media.scss" as media;
-
-@keyframes phone-options-open {
-    from {
-        max-height: 0;
-    }
-    to {
-        max-height: 100vh;
-    }
-}
+@use "../../assets/scss/_scssConstant.scss" as constant;
 
 .main-header {
     position: absolute;
@@ -35,28 +27,33 @@
         flex-direction: column;
         align-items: flex-end;
         position: relative;
-        .icon {
-            display: none;
-        }
 
         .options {
             position: absolute;
             top: 100%;
-            overflow: hidden;
-            max-height: 0;
-            display: flex;
+            right: -1000%;
+            display: none;
             flex-direction: column;
             align-items: flex-end;
-            background-color: color.$black;
-            transition: max-height 1s ease-in-out;
+            margin: 2em 0.5em 0 0;
+            gap: 1.2em;
+            transition: right 0.3s ease-in-out -0.1s;
             .option {
                 all: unset;
             }
-        }
-
-        .options.is-open {
-            /* animation: phone-options-open 1s forwards; */
-            max-height: 100vh;
+            .option.selected {
+                color: color.$black;
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: -0.7em;
+                    width: 100%;
+                    height: 1.2em;
+                    width: 0.2em;
+                    background-color: color.$black;
+                }
+            }
         }
 
         .icon {
@@ -64,9 +61,27 @@
             cursor: pointer;
             width: 2em;
             height: 1.6em;
-            display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            display: none;
+            .menu-background {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                background-color: color.$secondary;
+                width: 500dvw;
+                height: 300dvh;
+                border-radius: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform 0.5s ease-in;
+            }
+            .menu-background.fullscreen {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            .menu-background.minimize {
+                transform: translate(-50%, -50%) scale(0);
+            }
             .bar {
                 width: 100%;
                 height: 3px;
@@ -83,8 +98,33 @@
                 width: 80%;
             }
         }
+    }
 
-        .icon.is-open {
+    @include media.phone-css {
+        width: 100%;
+        display: flex;
+        padding: 1em 1.5em;
+        justify-content: space-between;
+        align-items: center;
+        height: constant.$mobile-header-height;
+        .phone-extended-options {
+            .options {
+                display: flex;
+            }
+            .icon {
+                display: flex;
+            }
+        }
+    }
+}
+
+.main-header.is-open {
+    .phone-expanded-options {
+        .options {
+            transition: right 0.3s ease-in-out 0.4s;
+            right: 0;
+        }
+        .icon {
             position: relative;
             .bar-1 {
                 transform: rotate(45deg);
@@ -95,19 +135,6 @@
             .bar-3 {
                 width: 100%;
                 transform: rotate(-45deg);
-            }
-        }
-    }
-
-    @include media.phone-css {
-        width: 100%;
-        display: flex;
-        padding: 1em 1.5em;
-        justify-content: space-between;
-        align-items: center;
-        .phone-extended-options {
-            .icon {
-                display: unset;
             }
         }
     }

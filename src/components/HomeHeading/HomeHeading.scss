@@ -1,6 +1,7 @@
 @use "../../assets/scss/_colors.scss" as color;
 @use "../../assets/scss/_media.scss" as media;
 @use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_scssConstant.scss" as constant;
 
 @mixin header-width {
     width: 59%;
@@ -86,7 +87,7 @@
         height: 60vh;
     }
     to {
-        height: 68px;
+        height: constant.$header-height;
     }
 }
 
@@ -171,7 +172,7 @@
             height: 25vh;
         }
         to {
-            height: 68px;
+            height: constant.$mobile-header-height;
         }
     }
 

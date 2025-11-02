@@ -1,6 +1,7 @@
 @use "../../assets/scss/_colors.scss" as color;
 @use "../../assets/scss/_mixins.scss" as mixin;
 @use "../../assets/scss/_media.scss" as media;
+@use "../../assets/scss/_scssConstant" as constant;
 
 .book-list {
     .book-list-content {
@@ -46,7 +47,7 @@
         height: 40dvh;
     }
     to {
-        height: calc(100dvh - 68px);
+        height: calc(100dvh - constant.$header-height);
     }
 }
 
@@ -66,7 +67,7 @@
             height: 75dvh;
         }
         to {
-            height: calc(100dvh - 68px);
+            height: calc(100dvh - constant.$header-height);
         }
     }
 }

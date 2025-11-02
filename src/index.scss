@@ -12,6 +12,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+    position: relative;
+}
+
 body {
     margin: 0;
     height: 100vh;
