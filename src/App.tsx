@@ -6,6 +6,7 @@ import "./App.scss";
 import Routes from "./components/Routes";
 import AllContextProvider from "./context/AllContextProvider";
 import Header from "./components/Header";
+import MobileFooter from "./components/Footer";
 import ViewportWatcher from "./components/ViewportWatcher";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <ViewportWatcher />
         <Header />
         <Routes />
+        <MobileFooter />
       </AllContextProvider>
     </BrowserRouter>
   );

@@ -1,8 +1,12 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
 
 .book-page {
-	width: 100vw;
-	min-height: 100vh;
-	display: flex;
-	overflow: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    @include media.phone-css {
+        flex-direction: column;
+    }
 }

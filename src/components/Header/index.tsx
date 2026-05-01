@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         "is-open": and(isMobileView, showPhoneMenu),
       })}
     >
-      <div>
+      <div className="logo-container">
         <img src={Logo} className="logo" />
       </div>
       <div className="options"></div>

@@ -41,6 +41,7 @@ const BookReview: React.FC = () => {
           </div>
           <div className="rating">
             <Repeat
+              name="full-star-rating"
               for={fullStarArray}
               element={FullStar}
               className="star full-star"
@@ -49,6 +50,7 @@ const BookReview: React.FC = () => {
               <HalfStar className="star half-star" />
             </Show>
             <Repeat
+              name="empty-star-rating"
               for={emptyStarArray}
               element={FullStar}
               className="star empty-star"
@@ -58,9 +60,9 @@ const BookReview: React.FC = () => {
         </div>
         <div className="review">
           <Repeat
+            name="review-para"
             for={book.review}
             element={ReviewPara}
-            Key={(item) => item?.urlName}
             passIndex
             passItem
           />

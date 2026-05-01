@@ -126,6 +126,58 @@
 
 .book-cover:not(.animated) {
     width: 41vw;
+    @include media.phone-css {
+        width: 100vw;
+    }
+}
+
+@include media.phone-css {
+    .book-cover {
+        .book-cover-content {
+            width: 100vw;
+            .image-and-details {
+                height: 45%;
+                .cover-image {
+                    img {
+                        height: 34vh;
+                    }
+                }
+                .details {
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    gap: 0.5em;
+                    margin-bottom: 0.5em;
+                    & > .column {
+                        width: 100%;
+                        height: auto;
+                    }
+                    .column {
+                        .detail-section {
+                            gap: 0.6em;
+                            .list {
+                                gap: 0.4em;
+                            }
+                        }
+                    }
+                }
+            }
+            .name-and-description {
+                margin-top: 1em;
+                height: auto;
+                justify-content: flex-start;
+                .author-name {
+                    display: none;
+                }
+                .description-list {
+                    flex-direction: column;
+                    .description-column {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @keyframes appearFromLeftBookCoverSkeleton {
@@ -134,6 +186,15 @@
     }
     100% {
         width: 41vw;
+    }
+}
+
+@keyframes appearFromLeftBookCoverSkeletonPhone {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100vw;
     }
 }
 
@@ -150,6 +211,10 @@
     .book-cover.animated {
         animation: appearFromLeftBookCoverSkeleton 1.2s
             cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        @include media.phone-css {
+            animation: appearFromLeftBookCoverSkeletonPhone 1.2s
+                cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        }
     }
 }
 

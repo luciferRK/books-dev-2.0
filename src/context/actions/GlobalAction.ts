@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import type { Book } from "../types";
-import { getProperty, or } from "uixtra/utils";
+import { getProperty, ifElse, or } from "uixtra/utils";
 import { SAMPLE_BOOK } from "../../utils/constants";
-import { getRandomInclusive } from "../../utils";
+import { getRandomInclusive, isMobileView } from "../../utils";
 import { GlobalContext } from "../contexts";
 
 const useGlobalAction = () => {
@@ -37,7 +37,8 @@ const useGlobalAction = () => {
   };
 
   const getSimilarBooks = (book: Book): Array<Book> => {
-    const numberOfSimilarBooks = 3;
+    const isMobile = isMobileView();
+    const numberOfSimilarBooks: number = ifElse(isMobile, 4, 3);
     const { allBooks } = state;
     const { genre, urlName } = book;
     const genreLowerCase: { [key: string]: boolean } = genre.reduce(

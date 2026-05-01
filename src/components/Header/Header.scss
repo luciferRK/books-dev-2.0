@@ -2,20 +2,34 @@
 @use "../../assets/scss/_media.scss" as media;
 @use "../../assets/scss/_scssConstant.scss" as constant;
 
+@keyframes phone-options-open {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 100vh;
+    }
+}
+
 .main-header {
     position: absolute;
     top: 0;
     left: 0;
     padding: 1em 2em;
     width: 59%;
-    .logo {
-        width: 2em;
-        height: 2em;
-        border-radius: 15px;
-        padding: 0.3em;
-        position: relative;
-        z-index: 101010;
-        background-color: color.$background;
+    z-index: 5;
+    .logo-container {
+        display: flex;
+        align-items: center;
+        .logo {
+            width: 2em;
+            height: 2em;
+            border-radius: 15px;
+            padding: 0.3em;
+            position: relative;
+            z-index: 101010;
+            background-color: color.$background;
+        }
     }
     & > .options {
         .option {
@@ -30,25 +44,26 @@
 
         .options {
             position: absolute;
+            z-index: 3;
             top: 100%;
-            right: -1000%;
+            left: -2000%;
             display: none;
             flex-direction: column;
             align-items: flex-end;
             margin: 2em 0.5em 0 0;
             gap: 1.2em;
-            transition: right 0.3s ease-in-out -0.1s;
+            transition: left 0.3s ease-in-out -0.1s;
             .option {
                 all: unset;
             }
             .option.selected {
                 color: color.$black;
                 position: relative;
+                font-weight: 600;
                 &:before {
                     content: "";
                     position: absolute;
                     left: -0.7em;
-                    width: 100%;
                     height: 1.2em;
                     width: 0.2em;
                     background-color: color.$black;
@@ -65,22 +80,38 @@
             justify-content: space-between;
             position: relative;
             display: none;
+            z-index: 2;
             .menu-background {
-                position: absolute;
-                top: 50%;
-                left: 50%;
+                position: fixed;
+                inset: 0;
                 background-color: color.$secondary;
-                width: 500dvw;
-                height: 300dvh;
-                border-radius: 50%;
-                transform: translate(-50%, -50%) scale(0);
-                transition: transform 0.5s ease-in;
+                z-index: -1;
+                clip-path: circle(
+                    0 at calc(100% - 1.5em - 1em)
+                        calc(#{constant.$mobile-header-height} / 2)
+                );
+                transition:
+                    clip-path 0.5s ease-in,
+                    visibility 0s linear 0.5s;
+                pointer-events: none;
+                visibility: hidden;
             }
             .menu-background.fullscreen {
-                transform: translate(-50%, -50%) scale(1);
+                clip-path: circle(
+                    150% at calc(100% - 1.5em - 1em)
+                        calc(#{constant.$mobile-header-height} / 2)
+                );
+                visibility: visible;
+                transition:
+                    clip-path 0.5s ease-in,
+                    visibility 0s;
             }
             .menu-background.minimize {
-                transform: translate(-50%, -50%) scale(0);
+                clip-path: circle(
+                    0 at calc(100% - 1.5em - 1em)
+                        calc(#{constant.$mobile-header-height} / 2)
+                );
+                visibility: hidden;
             }
             .bar {
                 width: 100%;
@@ -107,7 +138,10 @@
         justify-content: space-between;
         align-items: center;
         height: constant.$mobile-header-height;
-        .phone-extended-options {
+        .logo-container {
+            justify-content: center;
+        }
+        .phone-expanded-options {
             .options {
                 display: flex;
             }
@@ -121,8 +155,8 @@
 .main-header.is-open {
     .phone-expanded-options {
         .options {
-            transition: right 0.3s ease-in-out 0.4s;
-            right: 0;
+            transition: left 0.3s ease-in-out 0.4s;
+            left: -200%;
         }
         .icon {
             position: relative;

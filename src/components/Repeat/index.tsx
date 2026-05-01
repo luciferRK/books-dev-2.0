@@ -2,6 +2,7 @@ import type React from "react";
 import { getProperty, ifElse } from "uixtra/utils";
 
 interface RepeatProps extends React.HTMLAttributes<any> {
+  name: string;
   for: Array<any>;
   element: React.FC<any>;
   Key?: (item: any, index: number) => any;
@@ -11,9 +12,10 @@ interface RepeatProps extends React.HTMLAttributes<any> {
 
 const Repeat: React.FC<RepeatProps> = (props) => {
   const {
+    name,
     for: list,
     element: Element,
-    Key = (item, index) => `${getProperty(item, ["id"], "")}-${index}`,
+    Key = (item, index) => `${name}-${getProperty(item, ["id"], "")}-${index}`,
     passIndex = false,
     passItem = false,
     ...restProps
