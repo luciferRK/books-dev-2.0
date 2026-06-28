@@ -1,4 +1,5 @@
 import GlobalContextProvider from ".";
+import HomeContextProvider from "./HomeContext";
 
 const combineComponent = (components: Array<any> = []) => {
   return components.reduce(
@@ -15,7 +16,7 @@ const combineComponent = (components: Array<any> = []) => {
   );
 };
 
-const contextProviders = [GlobalContextProvider];
+const contextProviders = [GlobalContextProvider, HomeContextProvider];
 
 const AllContextProvider = combineComponent(contextProviders);
 

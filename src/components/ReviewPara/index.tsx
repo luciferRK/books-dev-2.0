@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Show, ShowIfElse } from "uixtra/components";
-import { classNames, ifElse, or } from "uixtra/utils";
+import { classNames, ifElse } from "uixtra/utils";
 import "./ReviewPara.scss";
 import { QUOTE_PREFIX } from "../../utils/constants";
 
