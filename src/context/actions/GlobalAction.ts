@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import type { Book } from "../types";
+import type { Book, GenreType } from "../types";
 import { getProperty, ifElse, or } from "uixtra/utils";
 import { SAMPLE_BOOK } from "../../utils/constants";
 import { getRandomInclusive, isMobileView } from "../../utils";
@@ -35,6 +35,10 @@ const useGlobalAction = () => {
   const setMobileView = (value: boolean) => {
     dispatch({ type: "SET_MOBILE_VIEW", payload: value });
   };
+
+  const setGenreInfo = (value: GenreType) => {
+    dispatch({ type: "SET_GENRE_INFO", payload: value });
+  }
 
   const getSimilarBooks = (book: Book): Array<Book> => {
     const isMobile = isMobileView();
@@ -97,6 +101,59 @@ const useGlobalAction = () => {
     return booksWithSimilarGenre;
   };
 
+  const getOrSetGenreInfo = (books: Book[] = state.allBooks) => {
+    const genreBuckets: Record<
+      string,
+      { books: Book[]; ratingSum: number; yearlyCount: Record<number, number> }
+      > = {}
+
+    const readBooks = books.filter((book) => book.category === 'read');
+
+    readBooks.forEach((book) => {
+      book.genre.forEach((genre) => {
+        if (!genreBuckets[genre]) {
+          genreBuckets[genre] = {
+            books: [], ratingSum: 0, yearlyCount: {},
+          }
+        }
+
+        const genreBucket = genreBuckets[genre];
+
+        genreBucket.books.push(book);
+        genreBucket.ratingSum += book.rating;
+
+        const year = new Date(book.dates.finished).getFullYear();
+        if (!Number.isNaN(year)) {
+          genreBucket.yearlyCount[year] = (genreBucket.yearlyCount[year] ?? 0) + 1;
+        }
+      })
+    })
+
+    const genreInfo: GenreType = {};
+
+    Object.entries(genreBuckets).forEach(([genre, bucket]) => {
+      let peakYear = null;
+      let peakCount = 0;
+
+      Object.entries(bucket.yearlyCount).forEach(([year, count]) => {
+        if (count > peakCount) {
+          peakCount = count;
+          peakYear = Number(year);
+        }
+      })
+
+      const count = bucket.books.length;
+
+      genreInfo[genre] = {
+        books: bucket.books,
+        avgRating: Number((ifElse(Boolean(count), bucket.ratingSum / count, 0)).toFixed(1)),
+        peakYear,
+      }
+    })
+
+    setGenreInfo(genreInfo);
+  }
+
   useEffect(() => {
     if (state.allBooks.length === 0) {
       setLoading(true);
@@ -122,6 +179,7 @@ const useGlobalAction = () => {
             ),
           );
           setAllBooks(getProperty(data, ["allBooks"], []));
+          getOrSetGenreInfo(getProperty(data, ["allBooks"], []));
         })
         .catch((err) => {
           console.error(err);

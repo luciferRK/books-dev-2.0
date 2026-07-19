@@ -1,5 +1,5 @@
 export type ExpandedMenuOptionValue =
-  | "new"
+  | "chronicle"
   | "reviews"
   | "genres"
   | "discovery";
@@ -28,6 +28,14 @@ export interface Book {
   };
 }
 
+export interface GenreType {
+  [key: string]: {
+    peakYear: number | null,
+    avgRating: number,
+    books: Book[];
+  }
+}
+
 export interface InitialGlobalStateType {
   allBooks: Book[];
   loading: boolean;
@@ -36,6 +44,7 @@ export interface InitialGlobalStateType {
   book: Book;
   favBook: Book;
   isMobileView: boolean;
+  genreInfo: GenreType;
 }
 
 export interface GlobalContextType {

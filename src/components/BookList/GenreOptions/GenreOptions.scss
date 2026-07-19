@@ -1,0 +1,24 @@
+@use "../../../assets/scss/colors" as color;
+
+.genre-options {
+    display: flex;
+    gap: 1em;
+    margin: 1em 1em;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+    .option {
+        all: unset;
+        font-size: 0.875rem;
+        width: fit-content;
+        padding: 0.5rem 1rem;
+        background-color: color.$offBackground;
+        border-radius: 1.25rem;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .option.selected {
+
+    }
+}

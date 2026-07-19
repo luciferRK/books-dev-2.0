@@ -15,6 +15,7 @@ export const initialStateGlobal: InitialGlobalStateType = {
   book: SAMPLE_BOOK,
   favBook: SAMPLE_BOOK,
   isMobileView: false,
+  genreInfo: {},
 };
 
 export const GlobalContext = React.createContext<GlobalContextType>({

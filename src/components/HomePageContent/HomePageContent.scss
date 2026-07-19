@@ -1,0 +1,87 @@
+@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
+@use "../../assets/scss/_scssConstant" as constant;
+
+.home-scroll-content {
+    width: 59%;
+    height: 40vh;
+    overflow-y: auto;
+    transform: translateY(300%);
+    transition: transform 0.5s ease-in-out;
+    scroll-timeline-name: mixin.$home-page-header-var;
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+@keyframes home-content-up {
+    from {
+        transform: translateY(300%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes home-content-down {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(300%);
+    }
+}
+
+@keyframes home-content-expand {
+    from {
+        height: 40dvh;
+    }
+    to {
+        height: calc(100dvh - constant.$header-height);
+    }
+}
+
+@include media.phone-css {
+    .home-scroll-content {
+        height: 75vh;
+        width: 100%;
+    }
+
+    @keyframes home-content-expand {
+        from {
+            height: 75dvh;
+        }
+        to {
+            height: calc(100dvh - constant.$header-height);
+        }
+    }
+}
+
+@supports (animation-timeline: scroll()) {
+    .idle {
+        .home-scroll-content {
+            @include mixin.home-page-header-shrink-timeline(home-content-expand);
+        }
+    }
+}
+
+.enter {
+    .home-scroll-content {
+        overflow-y: hidden;
+        animation: home-content-up 5s cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        animation-delay: 1s;
+    }
+}
+
+.idle {
+    .home-scroll-content {
+        transform: unset;
+    }
+}
+
+.exit {
+    .home-scroll-content {
+        overflow-y: hidden;
+        animation: home-content-down 1s cubic-bezier(0.18, 1, 0.22, 1) forwards;
+    }
+}

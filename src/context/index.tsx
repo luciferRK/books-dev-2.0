@@ -24,6 +24,8 @@ const globalContextReducer = (
       return { ...state, favBook: action.payload };
     case "SET_MOBILE_VIEW":
       return { ...state, isMobileView: action.payload };
+    case "SET_GENRE_INFO":
+      return {...state, genreInfo: action.payload}
     default:
       return state;
   }

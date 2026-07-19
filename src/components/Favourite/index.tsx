@@ -17,8 +17,7 @@ const Favourite: React.FC = () => {
   );
 
   return (
-    <div className="favourite">
-      <div className="favourite-content">
+      <div className="favourite">
         <div className="top-section section">
           <div className="left heading">
             <div>One of my</div>
@@ -56,7 +55,6 @@ const Favourite: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

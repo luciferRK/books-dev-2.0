@@ -3,7 +3,9 @@ import type { Book, ExpandedMenuOptionValue } from "../context/types";
 export const HEADINGS: {
   [key: string]: string;
 } = {
+  chronicle: "Everything\nI've Read\nand When",
   reviews: "Just Book Reviews and Opinions",
+  genres: "Pick your Poison.",
   discovery: "N New Books to Watch out for",
 };
 
@@ -11,6 +13,7 @@ export const MOBILE_HEADINGS: {
   [key: string]: string;
 } = {
   reviews: "The ones I've read",
+  genres: "Pick your Poison",
   discovery: "Discover some new books",
 };
 
@@ -60,12 +63,12 @@ export const EXPANDED_MENU_OPTIONS: {
     phoneView: boolean;
   };
 } = {
-  NEW: {
-    label: "NEW",
-    value: "new",
+  CHRONICLE: {
+    label: "CHRONICLE",
+    value: "chronicle",
     phoneView: true,
     action: (cb: (value: ExpandedMenuOptionValue) => void) => {
-      cb("new");
+      cb("chronicle");
     },
   },
   REVIEWS: {

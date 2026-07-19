@@ -26,7 +26,7 @@ const HomeContextProvider = (props: React.PropsWithChildren) => {
 
   return (
     <HomeContext.Provider value={{ state, dispatch }}>
-      {children};
+      {children}
     </HomeContext.Provider>
   );
 };

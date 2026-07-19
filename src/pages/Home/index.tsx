@@ -1,12 +1,13 @@
 import React from "react";
 import HomeHeading from "../../components/HomeHeading";
-import Favourite from "../../components/Favourite";
+import SideSection from "../../components/SideSection";
 import "./Home.scss";
-import BookList from "../../components/BookList";
+
 import SimilarBooksSkeleton from "../../components/SimilarBooks/SimilarBooksSkeleton";
 import BookCover from "../../components/BookCover";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import Loading from "../../components/Loading";
+import HomePageContent from "../../components/HomePageContent";
 
 const Home: React.FC = () => {
   const { state } = useGlobalAction();
@@ -18,10 +19,10 @@ const Home: React.FC = () => {
       <div className="home">
         <BookCover animated />
         <HomeHeading ref={homeHeadingRef} />
-        <BookList
+        <HomePageContent
           homeHeadingRef={homeHeadingRef as React.RefObject<HTMLDivElement>}
         />
-        <Favourite />
+        <SideSection />
         <SimilarBooksSkeleton />
       </div>
     </Loading>
