@@ -1,0 +1,52 @@
+@use "../../../assets/scss/colors" as color;
+
+.genre-heading {
+    margin: 1.5em 2em 1em 4em;
+    display: flex;
+    flex-direction: column;
+    .genre-options {
+        display: flex;
+        gap: 1em;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+        .option {
+            all: unset;
+            font-size: 0.875rem;
+            width: fit-content;
+            padding: 0.5rem 1rem;
+            background-color: color.$offBackground;
+            border-radius: 1.25rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .option.selected {
+            background-color: color.$secondary;
+        }
+    }
+    .selected-genre {
+        display: flex;
+        gap: 1em;
+        height: auto;
+        align-items: center;
+        .column {
+            width: 0.3em;
+            height: 100%;
+            background-color: color.$secondary;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h2 {
+                all: unset;
+                font-family: 'Anton';
+                font-size: 3rem;
+            }
+            span {
+                color: color.$secondary;
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@ import { and, classNames } from "uixtra/utils";
 import "../HomePageContent/HomePageContent.scss";
 import useHomeAction from "../../context/actions/HomeAction";
 import { Show } from "uixtra/components";
-import GenreOptions from "./GenreOptions";
+import GenreHeading from "./GenreHeading";
 
 interface BookListProps {
   homeHeadingRef: React.RefObject<HTMLDivElement>;
@@ -31,8 +31,10 @@ const BookList: React.FC<BookListProps> = (props) => {
   return (
     <div className="book-list home-scroll-section">
       <div className="book-list-content home-scroll-content">
-        <Show if={activePage === 'genres'}><GenreOptions /></Show>
-        <div className={classNames("books")}>
+        <Show if={activePage === 'genres'}><GenreHeading /></Show>
+        <div className={classNames("books", {
+          "genre-books": activePage === 'genres',
+        })}>
           {favRemovedReadList.map((book) => (
             <BookItem
               book={book}

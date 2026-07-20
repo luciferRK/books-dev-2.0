@@ -18,6 +18,16 @@ const useHomeAction = () => {
     [dispatch],
   );
 
+  const setActiveGenre = React.useCallback(
+    (value: string) => {
+      dispatch({
+        type: "SET_ACTIVE_GENRE",
+        payload: value,
+      });
+    },
+    [dispatch],
+  );
+
   const MenuOptions: Array<{
     key: string;
     isSelected: boolean;
@@ -43,6 +53,7 @@ const useHomeAction = () => {
   return {
     homeState,
     MenuOptions,
+    setActiveGenre,
   };
 };
 

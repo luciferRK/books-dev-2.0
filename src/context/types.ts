@@ -57,6 +57,7 @@ export interface GlobalContextType {
 
 export interface InitialHomeStateType {
   activePage: ExpandedMenuOptionValue;
+  activeGenre: string;
 }
 
 export interface HomeContextType {

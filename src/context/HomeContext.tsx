@@ -12,6 +12,8 @@ const homeContextReducer = (
   switch (action.type) {
     case "SET_ACTIVE_PAGE":
       return { ...state, activePage: action.payload };
+    case "SET_ACTIVE_GENRE":
+      return { ...state, activeGenre: action.payload };
     default:
       return state;
   }

@@ -25,6 +25,7 @@ export const GlobalContext = React.createContext<GlobalContextType>({
 
 export const initialStateHome: InitialHomeStateType = {
   activePage: "reviews",
+  activeGenre: "",
 };
 
 export const HomeContext = React.createContext<HomeContextType>({
