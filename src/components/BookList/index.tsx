@@ -31,10 +31,14 @@ const BookList: React.FC<BookListProps> = (props) => {
   return (
     <div className="book-list home-scroll-section">
       <div className="book-list-content home-scroll-content">
-        <Show if={activePage === 'genres'}><GenreHeading /></Show>
-        <div className={classNames("books", {
-          "genre-books": activePage === 'genres',
-        })}>
+        <Show if={activePage === 'genres'}>
+          <GenreHeading />
+        </Show>
+        <div
+          className={classNames("books", {
+            "genre-books": activePage === 'genres',
+          })}
+        >
           {favRemovedReadList.map((book) => (
             <BookItem
               book={book}
@@ -46,6 +50,7 @@ const BookList: React.FC<BookListProps> = (props) => {
                 setBook(book);
                 navigate(`/${book.urlName}`);
               }}
+              showRating={activePage === "genres"}
             />
           ))}
         </div>

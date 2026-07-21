@@ -35,6 +35,7 @@
         .expanded-options {
             --option-gap: 2em;
             --option-height: 1.2em;
+            --option-transform-adjust: 1.35em;
             --selected-option-index: 0;
             --selected-option-opacity: 1;
 
@@ -134,7 +135,13 @@
         gap: 2em;
     }
     to {
-        transform: translateY(-3.7em);
+        transform: translateY(
+            calc(
+                -2.3em -
+                    (var(--selected-option-index) *
+                        (var(--option-transform-adjust)))
+            )
+        );
         margin: 0 10% 0 0;
         gap: 0;
     }
