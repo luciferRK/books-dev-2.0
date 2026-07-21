@@ -28,6 +28,9 @@
             width: 60%;
             font-family: "Anton", sans-serif;
             white-space: wrap;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
         .expanded-options {
             --option-gap: 2em;
