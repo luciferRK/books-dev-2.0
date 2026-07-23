@@ -4,7 +4,7 @@
 
 .home-scroll-content {
     width: 59%;
-    height: 40vh;
+    height: calc(100dvh - var(--home-heading-height));
     overflow-y: auto;
     transform: translateY(300%);
     transition: transform 0.5s ease-in-out;
@@ -34,7 +34,7 @@
 
 @keyframes home-content-expand {
     from {
-        height: 40dvh;
+        height: calc(100dvh - var(--home-heading-height));
     }
     to {
         height: calc(100dvh - constant.$header-height);

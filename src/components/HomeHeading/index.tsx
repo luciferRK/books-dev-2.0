@@ -23,7 +23,7 @@ const HomeHeading = React.forwardRef<HTMLDivElement>((__, ref) => {
   } as React.CSSProperties;
 
   return (
-    <div className="home-heading" id="home-heading" ref={ref}>
+    <div className={classNames("home-heading", {"genres": activePage === "genres"})} id="home-heading" ref={ref}>
       <div className="home-heading-content">
         <div className="main-heading">
           <ShowIfElse if={isMobileView}>

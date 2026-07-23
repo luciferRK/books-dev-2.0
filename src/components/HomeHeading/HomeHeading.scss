@@ -7,12 +7,11 @@
     width: 59%;
 }
 
-
-
 .home-heading {
+    transition: height 0.5s cubic-bezier(0.18, 1, 0.22, 1);
     position: relative;
     width: 100dvw;
-    max-height: 60vh;
+    height: var(--home-heading-height);
     background-color: color.$primary;
     overflow: hidden;
     .home-heading-content {
@@ -40,6 +39,8 @@
             --selected-option-opacity: 1;
 
             margin: 5% 10% 0 0;
+            transition: margin 0.5s cubic-bezier(0.18, 1, 0.22, 1);
+            margin-top: calc(var(--home-heading-height) / 1dvh / 12 * 1%);
             display: flex;
             flex-direction: column;
             gap: var(--option-gap);
@@ -79,6 +80,12 @@
     }
 }
 
+.genres {
+    .home-heading-content {
+        padding-bottom: 3em;
+    }
+}
+
 @keyframes vanishUpHomeHeading {
     100% {
         height: 0;
@@ -90,7 +97,7 @@
         height: 0;
     }
     100% {
-        height: 60vh;
+        height: var(--home-heading-height);
     }
 }
 
@@ -110,10 +117,10 @@
 
 @keyframes home-heading-shrink-animation {
     from {
-        height: 60vh;
+        max-height: var(--home-heading-height);
     }
     to {
-        height: constant.$header-height;
+        max-height: constant.$header-height;
     }
 }
 
@@ -149,7 +156,7 @@
 
 @keyframes home-heading-main-heading-vanish {
     to {
-        transform: translateY(-100%);
+        transform: translateX(-100%);
     }
 }
 
@@ -196,7 +203,7 @@
 
 @include media.phone-css {
     .home-heading {
-        max-height: 25dvh;
+        height: 25dvh;
         .home-heading-content {
             width: 100%;
             align-items: flex-end;
@@ -215,10 +222,10 @@
 
     @keyframes home-heading-shrink-animation {
         from {
-            height: 25vh;
+            max-height: 25vh;
         }
         to {
-            height: constant.$mobile-header-height;
+            max-height: constant.$mobile-header-height;
         }
     }
 

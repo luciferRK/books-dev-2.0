@@ -1,0 +1,88 @@
+@use "../../../assets/scss/colors" as color;
+
+.genres-side-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3em;
+    padding: 4em 4em;
+    hr {
+        margin: 0;
+        border-color: rgba(color.$white, 0.5)
+    }
+    section.top {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        .tag, .genre {
+            font-family: 'Anton';
+        }
+        .tag {
+            text-transform: capitalize;
+            font-size: 0.8em;
+            color: rgba(color.$white, 0.45);
+            letter-spacing: 1px;
+        }
+        .genre {
+            font-size: 4rem;
+        }
+        .mini-stats {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            color: rgba(color.$white, 0.8);
+            font-weight: bold;
+            .avgRating {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                .avg-rating-star {
+                    height: 0.8em;
+                    width: 1em;
+                }
+            }
+            .dot {
+                width: 0.25em;
+                height: 0.25em;
+                background-color: rgba(color.$white, 0.8);
+            }
+        }
+    }
+    section.middle {
+        .head {
+            text-transform: capitalize;
+            font-family: 'Anton';
+            font-size: 0.85em;
+            margin-bottom: 1em;
+            letter-spacing: 1px;
+        }
+        .top-three-books {
+            display: flex;
+            gap: 1.5em;
+            .book-item {
+                .cover-image {
+                    img {
+                        height: 9em;
+                    }
+                }
+                .title {
+                    color: color.$black;
+                }
+            }
+        }
+    }
+    section.bottom {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .hazy-box {
+            font-size: 0.9em;
+            padding: 1em;
+            background-color: rgba(color.$white, 0.1);
+            border-radius: 5px;
+            .highlight {
+                font-family: 'Anton';
+                font-size: 2em;
+            }
+        }
+    }
+}

@@ -96,3 +96,10 @@ export const EXPANDED_MENU_OPTIONS: {
     },
   },
 };
+
+export const HOME_HEADING_HEIGHT: Record<ExpandedMenuOptionValue, React.CSSProperties['height']> = {
+  'chronicle': '60dvh',
+  'reviews': '60dvh',
+  'genres': '40dvh',
+  'discovery': '60dvh',
+}

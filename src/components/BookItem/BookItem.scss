@@ -42,4 +42,8 @@
     @include media.phone-css {
         width: 40%;
     }
+    &[data-disabled='true'] {
+        pointer-events: none;
+        cursor: default;
+    }
 }

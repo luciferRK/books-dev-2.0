@@ -3,11 +3,14 @@ import Favourite from "../Favourite";
 import "./SideSection.scss";
 import useHomeAction from "../../context/actions/HomeAction";
 import type { ExpandedMenuOptionValue } from "../../context/types";
+import Genres from "./Genres";
 
 const renderSideSectionComponent = (selectedSection: ExpandedMenuOptionValue) => {
   switch (selectedSection) {
     case 'chronicle':
       return
+    case 'genres':
+      return <Genres />
     default:
       return <Favourite />
   }

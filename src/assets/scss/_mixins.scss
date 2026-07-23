@@ -1,7 +1,7 @@
 @mixin home-page-header-shrink-timeline($animation) {
     animation: $animation linear forwards;
     animation-timeline: --header-shrink-timeline;
-    animation-range: 0 500px;
+    animation-range: 1px 500px;
 }
 
 $home-page-header-var: --header-shrink-timeline;

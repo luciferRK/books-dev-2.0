@@ -7,14 +7,15 @@ import Rating from "../Rating";
 
 interface BookItemProps {
   book: Book;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
   showRating?: boolean;
+  disabled?: boolean;
 }
 
 const BookItem: React.FC<BookItemProps> = (props) => {
-  const { book, onClick, showRating = false } = props;
+  const { book, onClick = () => { }, showRating = false, disabled = false } = props;
   return (
-    <div className="book-item" onClick={onClick}>
+    <div className="book-item" onClick={onClick} data-disabled={disabled}>
       <div className="cover-image">
         <img
           loading="lazy"

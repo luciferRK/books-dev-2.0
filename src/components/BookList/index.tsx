@@ -3,11 +3,12 @@ import "./BookList.scss";
 import { useNavigate } from "react-router-dom";
 import useGlobalAction from "../../context/actions/GlobalAction";
 import BookItem from "../BookItem";
-import { and, classNames } from "uixtra/utils";
+import { classNames } from "uixtra/utils";
 import "../HomePageContent/HomePageContent.scss";
 import useHomeAction from "../../context/actions/HomeAction";
 import { Show } from "uixtra/components";
 import GenreHeading from "./GenreHeading";
+import type { Book } from "../../context/types";
 
 interface BookListProps {
   homeHeadingRef: React.RefObject<HTMLDivElement>;
@@ -16,17 +17,14 @@ interface BookListProps {
 const BookList: React.FC<BookListProps> = (props) => {
   const { homeHeadingRef } = props;
   const { homeState } = useHomeAction();
-  const { state, setBook } = useGlobalAction();
-  const { activePage } = homeState;
-  const { allBooks, favBook } = state;
+  const { setBook, getBooks } = useGlobalAction();
+  const { activePage, activeGenre } = homeState;
   const navigate = useNavigate();
 
-  const favRemovedReadList = useMemo(() => {
-    if (allBooks.length > 0) {
-      return allBooks.filter((book) => and(book.urlName !== favBook.urlName, book.category !== 'toread'));
-    }
-    return [];
-  }, [allBooks, favBook.urlName]);
+  const favRemovedReadList = useMemo<Book[]>(() => {
+    console.log('calling memo for the fav removed list')
+    return getBooks(activePage, activeGenre);
+  }, [getBooks, activeGenre, activePage]);
 
   return (
     <div className="book-list home-scroll-section">
@@ -50,6 +48,7 @@ const BookList: React.FC<BookListProps> = (props) => {
                 setBook(book);
                 navigate(`/${book.urlName}`);
               }}
+              disabled={activePage !== 'reviews'}
               showRating={activePage === "genres"}
             />
           ))}
