@@ -1,4 +1,5 @@
 @use "../../../assets/scss/colors" as color;
+@use "../../../assets/scss/media" as media;
 
 .genre-heading {
     width: 100%;
@@ -74,4 +75,10 @@
             }
         }
     }
+}
+
+@include media.phone-css {
+	.genre-heading {
+	    padding: 1.5em 2em 2em 2em;
+	}
 }

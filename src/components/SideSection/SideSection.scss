@@ -11,8 +11,14 @@ $side-section-width: 41vw;
     height: 100vh;
     background-color: color.$secondary;
     z-index: 1;
+}
 
-    @include media.phone-css {
+@include media.phone-css {
+    .side-section {
+        width: 100%;
+        position: unset;
+    };
+    .side-section.reviews, .side-section.genres {
         display: none;
     }
 }

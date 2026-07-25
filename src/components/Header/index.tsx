@@ -13,6 +13,13 @@ const Header: React.FC = () => {
 
   const [showPhoneMenu, setShowPhoneMenu] = React.useState(false);
 
+  const handleMenuOptionClick = (optionClick: () => void) => {
+    optionClick();
+    (menuBackground.current as HTMLDivElement)
+      .classList.replace("fullscreen", "minimize");
+    setShowPhoneMenu(false);
+  }
+
   return (
     <div
       className={classNames("main-header", {
@@ -22,7 +29,6 @@ const Header: React.FC = () => {
       <div className="logo-container">
         <img src={Logo} className="logo" />
       </div>
-      <div className="options"></div>
       <div className="phone-expanded-options">
         <button
           type="button"
@@ -53,7 +59,7 @@ const Header: React.FC = () => {
               key={option.key}
               type="button"
               className={classNames("option", { selected: option.isSelected })}
-              onClick={option.onClick}
+              onClick={() => handleMenuOptionClick(option.onClick)}
             >
               {option.label}
             </button>

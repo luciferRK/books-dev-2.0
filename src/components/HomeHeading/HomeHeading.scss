@@ -40,7 +40,7 @@
 
             margin: 5% 10% 0 0;
             transition: margin 0.5s cubic-bezier(0.18, 1, 0.22, 1);
-            margin-top: calc(var(--home-heading-height) / 1dvh / 12 * 1%);
+            margin-top: calc(var(--home-heading-height) / 12dvh * 1%);
             display: flex;
             flex-direction: column;
             gap: var(--option-gap);
@@ -257,7 +257,7 @@
             padding: 4em 7em;
             align-items: center;
             .expanded-options {
-                margin-top: 10%;
+                margin-top: calc(var(--home-heading-height) / 10dvh * 1%);
                 align-self: flex-start;
             }
         }

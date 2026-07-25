@@ -7,12 +7,13 @@
 
 @include media.phone-css {
     .footer {
-        padding: 1em 0;
+        padding: 1em 0 2.5em;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
-        gap: 0.5em;
+        gap: 1em;
         font-family: "Poppins";
+        background-color: color.$offBackground;
         .copyright {
             span {
                 color: color.$primary-text;

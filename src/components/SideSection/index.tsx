@@ -4,6 +4,7 @@ import "./SideSection.scss";
 import useHomeAction from "../../context/actions/HomeAction";
 import type { ExpandedMenuOptionValue } from "../../context/types";
 import Genres from "./Genres";
+import { classNames } from "uixtra/utils";
 
 const renderSideSectionComponent = (selectedSection: ExpandedMenuOptionValue) => {
   switch (selectedSection) {
@@ -21,7 +22,7 @@ const SideSection: React.FC = () => {
   const {activePage } = homeState;
 
   return (
-    <div className="side-section">
+    <div className={classNames("side-section", activePage)}>
       {renderSideSectionComponent(activePage)}
     </div>
   );

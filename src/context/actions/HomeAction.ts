@@ -32,7 +32,7 @@ const useHomeAction = () => {
     key: string;
     isSelected: boolean;
     label: string;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    onClick: () => void;
   }> = React.useMemo(
     () =>
       Object.keys(EXPANDED_MENU_OPTIONS).map((key) => ({
@@ -40,8 +40,7 @@ const useHomeAction = () => {
         isSelected: activePage === EXPANDED_MENU_OPTIONS[key].value,
         label: EXPANDED_MENU_OPTIONS[key].label,
         showPhone: EXPANDED_MENU_OPTIONS[key].phoneView,
-        onClick: (e) => {
-          e.preventDefault();
+        onClick: () => {
           EXPANDED_MENU_OPTIONS[key].action((value) => {
             setActivePage(value);
           });
