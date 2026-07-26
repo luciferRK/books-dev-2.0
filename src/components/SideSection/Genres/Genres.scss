@@ -74,16 +74,5 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
-        .hazy-box {
-            font-size: 0.9em;
-            padding: 1em;
-            background-color: rgba(color.$white, 0.1);
-            border-radius: 5px;
-            .highlight {
-                letter-spacing: 1.2px;
-                font-family: 'Anton';
-                font-size: 2em;
-            }
-        }
     }
 }

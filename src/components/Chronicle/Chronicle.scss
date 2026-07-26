@@ -1,0 +1,114 @@
+@use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
+
+.chronicle-book-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em 4em;
+    .year-item {
+        .heading {
+            display: flex;
+            width: 100%;
+            gap: 2em;
+            align-items: center;
+            span {
+                font-size: 2em;
+                font-family: 'Anton';
+                letter-spacing: 1.2px;
+                color: color.$secondary;
+            }
+            hr {
+                flex: 1;
+                border-color: color.$secondary;
+                margin: 0;
+            }
+        }
+        .months {
+            display: flex;
+            flex-direction: column;
+            .month-item {
+                display: flex;
+                gap: 2em;
+                padding: 1em 0;
+                &:not(:first-child) {
+                    border-top: 1px solid color.$offBackground;
+                }
+                .month {
+                    width: 6rem;
+                    height: 6rem;
+                    display: flex;
+                    padding: 0.5rem;
+                    font-size: 0.8em;
+                    font-weight: bolder;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 0.8rem;
+                    text-transform: capitalize;
+                }
+                .month.cyan {
+                    background-color: rgba(color.$secondary, 0.15);
+                    color: color.$secondary;
+                }
+                .month.rust {
+                    background-color: rgba(color.$primary, 0.15);
+                    color: color.$primary-text;
+                }
+                .month.frost {
+                    background-color: rgba(color.$bluebellFrost, 0.15);
+                    color: color.$bluebellFrost;
+                }
+                .month.red {
+                    background-color: rgba(color.$vermillionRed, 0.15);
+                    color: color.$vermillionRed;
+                }
+                .books {
+                    display: flex;
+                    gap: 1%;
+                    row-gap: 1.5em;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    .chronicle-book-item {
+                        width: 32%;
+                    }
+                }
+                .books.cyan {
+                    .chronicle-book-item {
+                        .content {
+                            .title {
+                                color: color.$secondary;
+                            }
+                        }
+                    }
+                }
+                .books.rust {
+                    .chronicle-book-item {
+                        .content {
+                            .title {
+                                color: color.$primary-text;
+                            }
+                        }
+                    }
+                }
+                .books.frost {
+                    .chronicle-book-item {
+                        .content {
+                            .title {
+                                color: color.$bluebellFrost;
+                            }
+                        }
+                    }
+                }
+                .books.red {
+                    .chronicle-book-item {
+                        .content {
+                            .title {
+                                color: color.$vermillionRed;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

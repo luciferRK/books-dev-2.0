@@ -154,20 +154,25 @@ const useGlobalAction = () => {
     setGenreInfo(genreInfo);
   }
 
-  const getBooks = useCallback((homeSections: ExpandedMenuOptionValue | 'all' = 'all', genreName: string = '') => {
-    switch (homeSections) {
-      case 'reviews':
-        return state.allBooks
-          .filter((book) =>
-            and(book.urlName !== state.favBook.urlName, book.category !== 'toread')
-          )
-          .sort((a, b) => a.name.localeCompare(b.name));
-      case 'genres':
-        return getProperty(state.genreInfo, [genreName, 'books'], []);
-      default:
-        return state.allBooks;
-    }
-  }, [state.allBooks, state.favBook.urlName, state.genreInfo]);
+  const getBooks = useCallback<
+    (homeSections: ExpandedMenuOptionValue | 'all', genreName: string) => Book[]
+  >(
+    (homeSections: ExpandedMenuOptionValue | 'all' = 'all', genreName: string = '') => {
+      switch (homeSections) {
+        case 'reviews':
+          return state.allBooks
+            .filter((book) =>
+              and(book.urlName !== state.favBook.urlName, book.category !== 'toread')
+            )
+            .sort((a, b) => a.name.localeCompare(b.name));
+        case 'genres':
+          return getProperty(state.genreInfo, [genreName, 'books'], []);
+        default:
+          return state.allBooks;
+      }
+    },
+    [state.allBooks, state.favBook.urlName, state.genreInfo]
+  );
 
   useEffect(() => {
     if (state.allBooks.length === 0) {

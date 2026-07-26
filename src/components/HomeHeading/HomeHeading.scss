@@ -156,7 +156,7 @@
 
 @keyframes home-heading-main-heading-vanish {
     to {
-        transform: translateX(-100%);
+        transform: translateX(-150%);
     }
 }
 
@@ -234,7 +234,7 @@
             opacity: 1;
         }
         to {
-            transform: translateY(-100%);
+            transform: translateY(-150%);
             opacity: 0;
             display: none;
         }

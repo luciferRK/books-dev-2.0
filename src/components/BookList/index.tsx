@@ -22,7 +22,6 @@ const BookList: React.FC<BookListProps> = (props) => {
   const navigate = useNavigate();
 
   const favRemovedReadList = useMemo<Book[]>(() => {
-    console.log('calling memo for the fav removed list')
     return getBooks(activePage, activeGenre);
   }, [getBooks, activeGenre, activePage]);
 

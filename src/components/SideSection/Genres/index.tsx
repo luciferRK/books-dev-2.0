@@ -7,6 +7,7 @@ import BookItem from "../../BookItem";
 import type { Book } from "../../../context/types";
 import { shuffle } from "../../../utils";
 import "./Genres.scss";
+import HazyBox from "../../ui/HazyBox";
 
 const Genres: React.FC = () => {
   const { homeState } = useHomeAction();
@@ -46,18 +47,18 @@ const Genres: React.FC = () => {
       </section>
       <hr />
       <section className="bottom">
-        <div className="books hazy-box">
-          <div className="highlight">{getProperty(genreInfo, [activeGenre, 'books'], []).length}</div>
-          <div>books</div>
-        </div>
-        <div className='hazy-box'>
-          <div className="highlight">{getProperty(genreInfo, [activeGenre, 'avgRating'], 0)}</div>
-          <div>avg rating</div>
-        </div>
-        <div className="hazy-box">
-          <div className="highlight">{getProperty(genreInfo, [activeGenre, 'peakYear'])}</div>
-          <div>Peak Year</div>
-        </div>
+        <HazyBox
+          title={getProperty(genreInfo, [activeGenre, 'books'], []).length}
+          content="books"
+        />
+        <HazyBox
+          title={getProperty(genreInfo, [activeGenre, 'avgRating'], 0)}
+          content="avg rating"
+        />
+        <HazyBox
+          title={getProperty(genreInfo, [activeGenre, 'peakYear'])}
+          content="Peak Year"
+        />
       </section>
     </div>
   );

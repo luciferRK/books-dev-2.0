@@ -1,0 +1,25 @@
+@use "../../../assets/scss/_colors.scss" as color;
+
+.chronicle-book-item {
+    all: unset;
+    display: flex;
+    gap: 1.5em;
+    height: 6em;
+    cursor: pointer;
+    .cover-image {
+        img {
+            height: 100%;
+        }
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        .title {
+            font-size: 1em;
+        }
+        .author {
+            font-size: 0.7em;
+        }
+    }
+}

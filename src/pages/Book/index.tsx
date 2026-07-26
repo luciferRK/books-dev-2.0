@@ -11,14 +11,14 @@ import Loading from "../../components/Loading";
 
 const Book: React.FC = () => {
 	const { setBook, state } = useGlobalAction();
-	const { allBooks, loading } = state;
+	const { allBooks, loading, book } = state;
 	const { bookName = "" } = useParams();
 
 	React.useEffect(() => {
-		if (and(!isEmpty(bookName), !loading)) {
+		if (and(!isEmpty(bookName), !loading, book.urlName !== bookName)) {
 			setBook(allBooks.find((book) => book.urlName === bookName) as BookType);
 		}
-	}, [bookName, loading]);
+	}, [bookName, loading, book.urlName, allBooks, setBook]);
 
 	return (
 		<Loading isIt={loading}>

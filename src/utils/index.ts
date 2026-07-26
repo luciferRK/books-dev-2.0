@@ -14,4 +14,23 @@ export const shuffle = <T>(arr: T[]): T[] => {
     [result[i], result[j]] = [result[j], result[i]];
   }
   return result;
-}
+};
+
+export const monthsAgo = (isoDate: string, now = new Date()): number => {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  const start = new Date(y, m - 1, d);
+
+  if (
+    !y || !m || !d ||
+    start.getFullYear() !== y ||
+    start.getMonth() !== m - 1 ||
+    start.getDate() !== d
+  ) throw new Error("Invalid date. Use YYYY-MM-DD");
+
+  let whole = (now.getFullYear() - y) * 12 + (now.getMonth() - (m - 1));
+  let anchor = new Date(y, m - 1 + whole, d);
+  if (anchor > now) anchor = new Date(y, m - 2 + whole--, d);
+  const next = new Date(y, m + whole, d);
+
+  return +(whole + (now.getTime() - anchor.getTime()) / (next.getTime() - anchor.getTime())).toFixed(1);
+};

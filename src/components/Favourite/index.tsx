@@ -4,7 +4,7 @@ import useGlobalAction from "../../context/actions/GlobalAction";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import { BrushMaskButton } from "../Button";
+import { BrushMaskButton } from "../ui/Button";
 
 const Favourite: React.FC = () => {
   const { state, setBook } = useGlobalAction();

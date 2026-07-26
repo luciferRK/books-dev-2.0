@@ -8,6 +8,32 @@
   ],
   "allBooks": [
     {
+      "urlName": "dark-age",
+      "name": "Dark Age",
+      "image": "dark_age.webp",
+      "rating": 0,
+      "description": [
+        "For a decade Darrow led a revolution against the corrupt color-coded Society. Now, outlawed by the very Republic he founded, he wages a rogue war on Mercury in hopes that he can still salvage the dream of Eo. But as he leaves death and destruction in his wake, is he still the hero who broke the chains? Or will another legend rise to take his place?",
+        "Lysander au Lune, the heir in exile, has returned to the Core. Determined to bring peace back to mankind at the edge of his sword, he must overcome or unite the treacherous Gold families of the Core and face down Darrow over the skies of war-torn Mercury."
+      ],
+      "review": [],
+      "category": "toread",
+      "genre": ["Sci-Fi", "Dystopia", "Action"],
+      "author": {
+        "name": "Pierce Brown",
+        "instagram": "https://www.instagram.com/piercebrownofficial/",
+        "twitter": "https://x.com/Pierce_Brown"
+      },
+      "buyLinks": {
+        "amazon": "",
+        "amazonAudio": ""
+      },
+      "dates": {
+        "started": "2026-05-17",
+        "finished": ""
+      }
+    },
+    {
       "urlName": "iron-gold",
       "name": "Iron Gold",
       "image": "iron_gold.webp",
@@ -383,8 +409,8 @@
         "amazonAudio": ""
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2024-08-27",
+        "finished": "2024-09-02"
       }
     },
     {
@@ -452,8 +478,8 @@
         "amazonAudio": "https://amzn.to/490JUyj"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-03-12",
+        "finished": "2022-09-28"
       }
     },
     {
@@ -556,8 +582,8 @@
         "amazonAudio": "https://amzn.to/3OgOMWj"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-06-06",
+        "finished": "2022-06-10"
       }
     },
     {
@@ -734,31 +760,6 @@
       }
     },
     {
-      "urlName": "solo-leveling",
-      "name": "Solo Leveling",
-      "image": "solo_leveling.webp",
-      "rating": 4.5,
-      "description": [
-        "In a world where hunters — humans who possess magical abilities — must battle deadly monsters to protect the human race from certain annihilation, a notoriously weak hunter named Sung Jinwoo finds himself in a seemingly endless struggle for survival. One day, after narrowly surviving an overwhelmingly powerful double dungeon that nearly wipes out his entire party, a mysterious program called the System chooses him as its sole player and in turn, gives him the extremely rare ability to level up in strength, possibly beyond any known limits. Jinwoo then sets out on a journey as he fights against all kinds of enemies, both man and monster, to discover the secrets of the dungeons and the true source of his powers."
-      ],
-      "review": ["Yet to write, Didnt find time", null, "quote:Arise."],
-      "category": "read",
-      "genre": ["Manwah", "Action", "Fiction"],
-      "author": {
-        "name": "Chugong",
-        "instagram": "",
-        "twitter": ""
-      },
-      "buyLinks": {
-        "amazon": "",
-        "amazonAudio": ""
-      },
-      "dates": {
-        "started": "",
-        "finished": ""
-      }
-    },
-    {
       "urlName": "harry-potter-and-the-cursed-child",
       "name": "Harry Potter and The Cursed Child",
       "image": "hp8.webp",
@@ -788,8 +789,8 @@
         "amazonAudio": ""
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-04-10",
+        "finished": "2022-04-12"
       }
     },
     {
@@ -820,8 +821,8 @@
         "amazonAudio": "https://amzn.to/3Zb1jB2"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-04-07",
+        "finished": "2022-04-11"
       }
     },
     {
@@ -852,8 +853,8 @@
         "amazonAudio": ""
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-03-18",
+        "finished": "2022-04-07"
       }
     },
     {
@@ -885,8 +886,8 @@
         "amazonAudio": "https://amzn.to/3Cr4cou"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-03-13",
+        "finished": "2022-03-27"
       }
     },
     {
@@ -917,8 +918,8 @@
         "amazonAudio": "https://amzn.to/4fkcP2C"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2022-03-01",
+        "finished": "2022-03-14"
       }
     },
     {
@@ -950,8 +951,8 @@
         "amazonAudio": "https://amzn.to/4hOBHRC"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2021-12-12",
+        "finished": "2022-03-09"
       }
     },
     {
@@ -1014,8 +1015,8 @@
         "amazonAudio": ""
       },
       "dates": {
-        "started": null,
-        "finished": null
+        "started": "2022-02-28",
+        "finished": "2022-03-30"
       }
     },
     {
@@ -1322,8 +1323,8 @@
         "amazonAudio": "https://amzn.to/4eANu3S"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2021-12-10",
+        "finished": "2021-12-12"
       }
     },
     {
@@ -1425,8 +1426,8 @@
         "amazonAudio": "https://amzn.to/47Fg3uD"
       },
       "dates": {
-        "started": "",
-        "finished": ""
+        "started": "2021-04-30",
+        "finished": "2021-05-20"
       }
     },
     {

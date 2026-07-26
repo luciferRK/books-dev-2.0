@@ -5,11 +5,12 @@ import useHomeAction from "../../context/actions/HomeAction";
 import type { ExpandedMenuOptionValue } from "../../context/types";
 import Genres from "./Genres";
 import { classNames } from "uixtra/utils";
+import CurrentlyReading from "./CurrentlyReading";
 
 const renderSideSectionComponent = (selectedSection: ExpandedMenuOptionValue) => {
   switch (selectedSection) {
     case 'chronicle':
-      return
+      return <CurrentlyReading />
     case 'genres':
       return <Genres />
     default:

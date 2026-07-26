@@ -1,0 +1,71 @@
+@use "../../../assets/scss/_colors.scss" as color;
+
+@mixin heading-style {
+    font-family: 'Anton';
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(color.$white, 0.55);
+    padding-bottom: 1em;
+}
+
+.currently-reading {
+    padding: 4em 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    hr {
+        border-color: rgba(color.$white, 0.2);
+        margin: 0;
+    }
+    .book {
+        .heading {
+            @include heading-style();
+        }
+        .content {
+            display: flex;
+            gap: 1.5em;
+            img {
+                height: 11em;
+            }
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 0.7em;
+                .title {
+                    font-size: 1.3em;
+                    letter-spacing: 1.3px;
+                    font-family: 'Anton';
+                }
+                .author {
+                    color: rgba(color.$white, 0.7);
+                    font-size: 0.8
+                }
+                .since {
+                    font-size: 0.75em;
+                    color: rgba(color.$white, 0.6);
+                }
+            }
+        }
+    }
+    .stats {
+        .heading {
+            @include heading-style();
+        }
+        .content {
+            display: flex;
+            gap: 1.5em;
+        }
+    }
+    .up-next {
+        .heading {
+            @include heading-style();
+        }
+        .chronicle-book-item {
+            .cover-image {
+                img {
+                    height: 7em;
+                }
+            }
+        }
+    }
+}
