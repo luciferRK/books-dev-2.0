@@ -1,5 +1,5 @@
 import React from "react";
-import type { Book } from "../../context/types";
+import type { Book } from "../../store/types";
 import ChronicleBookItem from "./ChronicleBookItem";
 import { classNames } from "uixtra/utils";
 

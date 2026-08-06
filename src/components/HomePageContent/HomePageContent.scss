@@ -47,6 +47,10 @@
         width: 100%;
     }
 
+    .home-scroll-content.chronicle-book-list {
+        height: auto;
+    }
+
     @keyframes home-content-expand {
         from {
             height: 75dvh;
@@ -59,7 +63,7 @@
 
 @supports (animation-timeline: scroll()) {
     .idle {
-        .home-scroll-content {
+        .home-scroll-content:not(.chronicle-book-list) {
             @include mixin.home-page-header-shrink-timeline(home-content-expand);
         }
     }

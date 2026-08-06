@@ -1,8 +1,9 @@
 import React from "react";
 import "./HomePageContent.scss";
 import BookList from "../BookList";
-import useHomeAction from "../../context/actions/HomeAction";
+import { useActivePage } from "../../store/home/useHome";
 import ChronicleBookList from "../Chronicle";
+import Discovery from "../Discovery";
 
 interface HomePageContentProps {
   homeHeadingRef: React.RefObject<HTMLDivElement>;
@@ -10,16 +11,11 @@ interface HomePageContentProps {
 
 const HomePageContent: React.FC<HomePageContentProps> = (props) => {
   const { homeHeadingRef } = props;
-  const { homeState } = useHomeAction();
-  const { activePage } = homeState;
-
-  if (homeState.activePage === 'discovery') {
-    return <div className="discovery-content" />
-  }
+  const activePage = useActivePage();
 
   switch (activePage) {
     case 'discovery':
-      return <div className="discovery-content" />
+      return <Discovery />
     case 'chronicle':
       return <ChronicleBookList />
     default:

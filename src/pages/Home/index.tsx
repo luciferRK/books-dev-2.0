@@ -5,19 +5,18 @@ import "./Home.scss";
 
 import SimilarBooksSkeleton from "../../components/SimilarBooks/SimilarBooksSkeleton";
 import BookCover from "../../components/BookCover";
-import useGlobalAction from "../../context/actions/GlobalAction";
-import Loading from "../../components/Loading";
+import { useIsMobileView, useLoading } from "../../store/global/useGlobal";
 import HomePageContent from "../../components/HomePageContent";
-import { HOME_HEADING_HEIGHT } from "../../utils/constants";
-import useHomeAction from "../../context/actions/HomeAction";
+import { HOME_HEADING_HEIGHT, HOME_HEADING_HEIGHT_MOBILE } from "../../utils/constants";
+import { useActivePage } from "../../store/home/useHome";
+import { classNames, ifElse } from "uixtra/utils";
 
 const HOME_HEADING_HEIGHT_CSS_VARIABLE = "--home-heading-height";
 
 const Home: React.FC = () => {
-  const { state } = useGlobalAction();
-  const { homeState } = useHomeAction();
-  const { loading } = state;
-  const { activePage } = homeState;
+  const loading = useLoading();
+  const activePage = useActivePage();
+  const isMobileView = useIsMobileView();
   const homeHeadingRef = React.useRef<HTMLDivElement>(null);
   const homePageRef = React.useRef<HTMLDivElement>(null);
 
@@ -25,26 +24,28 @@ const Home: React.FC = () => {
     if (!loading) {
       homePageRef.current?.style.setProperty(
         HOME_HEADING_HEIGHT_CSS_VARIABLE,
-        HOME_HEADING_HEIGHT[activePage] as string
+        ifElse(
+          isMobileView,
+          HOME_HEADING_HEIGHT_MOBILE,
+          HOME_HEADING_HEIGHT[activePage] as string
+        )
       );
     }
-  }, [activePage, loading])
+  }, [activePage, isMobileView, loading])
 
   return (
-    <Loading isIt={loading}>
-      <div
-        className="home"
-        ref={homePageRef}
-      >
-        <BookCover animated />
-        <HomeHeading ref={homeHeadingRef} />
-        <HomePageContent
-          homeHeadingRef={homeHeadingRef as React.RefObject<HTMLDivElement>}
-        />
-        <SideSection />
-        <SimilarBooksSkeleton />
-      </div>
-    </Loading>
+    <div
+      className={classNames("home", activePage)}
+      ref={homePageRef}
+    >
+      <BookCover animated />
+      <HomeHeading ref={homeHeadingRef} />
+      <HomePageContent
+        homeHeadingRef={homeHeadingRef as React.RefObject<HTMLDivElement>}
+      />
+      <SideSection />
+      <SimilarBooksSkeleton />
+    </div>
   );
 };
 

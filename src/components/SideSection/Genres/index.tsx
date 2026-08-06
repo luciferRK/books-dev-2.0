@@ -1,19 +1,17 @@
 import React from "react";
-import useHomeAction from "../../../context/actions/HomeAction";
+import { useActiveGenre } from "../../../store/home/useHome";
 import FullStar from "../../Icon/FullStar";
-import useGlobalAction from "../../../context/actions/GlobalAction";
+import { useGenreInfo } from "../../../store/global/useGlobal";
 import { getProperty } from "uixtra/utils";
 import BookItem from "../../BookItem";
-import type { Book } from "../../../context/types";
+import type { Book } from "../../../store/types";
 import { shuffle } from "../../../utils";
 import "./Genres.scss";
 import HazyBox from "../../ui/HazyBox";
 
 const Genres: React.FC = () => {
-  const { homeState } = useHomeAction();
-  const { state } = useGlobalAction();
-  const { activeGenre } = homeState;
-  const { genreInfo } = state;
+  const activeGenre = useActiveGenre();
+  const genreInfo = useGenreInfo();
 
   const topThreeOfGenre = React.useMemo<Book[]>(() => {
     const booksOfGenre = (getProperty(genreInfo, [activeGenre, 'books'], []) as Book[]);

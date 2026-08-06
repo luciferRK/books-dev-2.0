@@ -1,7 +1,7 @@
 import React from "react";
 import "./Chronicle.scss";
-import useGlobalAction from "../../context/actions/GlobalAction";
-import type { Book } from "../../context/types";
+import { useAllBooks } from "../../store/global/useGlobal";
+import type { Book } from "../../store/types";
 import YearItem from "./Year";
 
 type ArrangedBooksByMonth = Record<string, Book[]>;
@@ -24,7 +24,7 @@ const MONTH_NAMES = [
 ] as const;
 
 const ChronicleBookList: React.FC = () => {
-  const { state } = useGlobalAction();
+  const allBooks = useAllBooks();
 
   const { yearsInDesc, arrangedBooks } = React.useMemo<{
     yearsInDesc: string[],
@@ -32,7 +32,7 @@ const ChronicleBookList: React.FC = () => {
   }>(() => {
     const booksByYearAndMonth: Record<string, BookWithFinishedTime[][]> = {};
 
-    for (const book of state.allBooks) {
+    for (const book of allBooks) {
       if (book.category !== "read") {
         continue;
       }
@@ -85,7 +85,7 @@ const ChronicleBookList: React.FC = () => {
       yearsInDesc: yearsInDescendingOrder,
       arrangedBooks: sortedArrangedBooks
     };
-  }, [state.allBooks]);
+  }, [allBooks]);
 
   return (
     <div className="chronicle home-scroll-section">

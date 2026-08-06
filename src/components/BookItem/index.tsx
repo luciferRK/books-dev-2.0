@@ -1,6 +1,6 @@
 import React from "react";
 import "./BookItem.scss";
-import type { Book } from "../../context/types";
+import type { Book } from "../../store/types";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { Show } from "uixtra/components";
 import Rating from "../Rating";

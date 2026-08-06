@@ -1,0 +1,163 @@
+@use "../../../assets/scss/_colors.scss" as color;
+
+.plot-graph {
+    position: relative;
+    width: 100%;
+    max-width: var(--plot-size, 460px);
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: color.$offBackground;
+    border: 0.5px solid rgba(color.$offwhite, 0.15);
+
+    // 2 x 2 quadrant cells — only used for their dividing borders.
+    // Inset to match .plot-area so the crosshair doesn't cross the edge labels.
+    .plot-grid {
+        position: absolute;
+        inset: 40px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+
+        span {
+            border-color: rgba(color.$offwhite, 0.12);
+            border-style: solid;
+            border-width: 0;
+        }
+        span:nth-child(1) {
+            border-right-width: 0.5px;
+            border-bottom-width: 0.5px;
+        }
+        span:nth-child(2) {
+            border-bottom-width: 0.5px;
+        }
+        span:nth-child(3) {
+            border-right-width: 0.5px;
+        }
+    }
+
+    .plot-axis-label {
+        position: absolute;
+        font-family: "Inter", sans-serif;
+        font-size: 0.6875rem;
+        color: rgba(color.$offwhite, 0.7);
+        white-space: nowrap;
+        pointer-events: none;
+
+        &.top {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.bottom {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        &.right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+        }
+    }
+
+    // The inset region where points are plotted (keeps dots off the labels).
+    .plot-area {
+        position: absolute;
+        inset: 40px;
+    }
+
+    .plot-point {
+        all: unset;
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: var(--point-color);
+        border: 2px solid color.$offBackground;
+        transform: translate(-50%, -50%) scale(1);
+        transform-origin: center;
+        cursor: pointer;
+        box-sizing: border-box;
+        animation: plot-point-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        transition:
+            transform 0.25s cubic-bezier(0.18, 1, 0.22, 1),
+            box-shadow 0.25s ease;
+
+        &:hover,
+        &:focus-visible {
+            transform: translate(-50%, -50%) scale(1.4);
+            z-index: 3;
+
+            .plot-point-tooltip {
+                opacity: 1;
+                transform: translate(-50%, -6px);
+            }
+        }
+
+        &.selected {
+            transform: translate(-50%, -50%) scale(1.5);
+            box-shadow:
+                0 0 0 3px color.$offBackground,
+                0 0 0 5px var(--point-color);
+            z-index: 2;
+        }
+
+        // When a custom node is rendered, drop the default dot look so the
+        // node itself defines the point's appearance.
+        &.custom {
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            background-color: transparent;
+            border: none;
+
+            &.selected {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .plot-point-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, 2px);
+        margin-bottom: 4px;
+        padding: 2px 8px;
+        border-radius: 6px;
+        background-color: color.$background;
+        color: color.$white;
+        font-family: "Inter", sans-serif;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s cubic-bezier(0.18, 1, 0.22, 1);
+    }
+}
+
+@keyframes plot-point-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plot-graph .plot-point {
+        animation-duration: 0.01ms;
+    }
+}

@@ -1,16 +1,15 @@
 import React from "react";
-import useGlobalAction from "../../../context/actions/GlobalAction"
+import { useGenreInfo } from "../../../store/global/useGlobal";
 import "./GenreHeading.scss";
-import useHomeAction from "../../../context/actions/HomeAction";
+import { useActiveGenre, useHomeActions } from "../../../store/home/useHome";
 import { classNames, getProperty, ifElse } from "uixtra/utils";
 
 const GENRE_SECTION_SCROLL_VALUE = 300;
 
 const GenreHeading = React.forwardRef<HTMLDivElement >((_, ref) => {
-  const { state } = useGlobalAction();
-  const { homeState, setActiveGenre } = useHomeAction();
-  const { genreInfo } = state;
-  const { activeGenre } = homeState;
+  const genreInfo = useGenreInfo();
+  const { setActiveGenre } = useHomeActions();
+  const activeGenre = useActiveGenre();
 
   const optionsRef = React.useRef<HTMLDivElement>(null);
 

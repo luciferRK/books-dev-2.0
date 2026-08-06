@@ -1,17 +1,15 @@
 import React, { useMemo } from "react";
 import "./SimilarBooks.scss";
-import useGlobalAction from "../../context/actions/GlobalAction";
+import { useBook, useGlobalActions } from "../../store/global/useGlobal";
 import BookItem from "../BookItem";
 import { useNavigate } from "react-router-dom";
 
-interface SimilarBooksProps {}
-
-const SimilarBooks: React.FC<SimilarBooksProps> = () => {
-  const { state, getSimilarBooks } = useGlobalAction();
-  const { book } = state;
+const SimilarBooks: React.FC = () => {
+  const book = useBook();
+  const { getSimilarBooks } = useGlobalActions();
   const navigate = useNavigate();
 
-  const similarBooks = useMemo(() => getSimilarBooks(book), [book.urlName]);
+  const similarBooks = useMemo(() => getSimilarBooks(book), [book, getSimilarBooks]);
 
   return (
     <div className="similar-books">

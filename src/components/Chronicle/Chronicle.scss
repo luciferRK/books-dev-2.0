@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
-    padding: 2em 4em;
+    padding: 2em 2em;
     .year-item {
         .heading {
             display: flex;
@@ -20,6 +20,7 @@
             }
             hr {
                 flex: 1;
+                border-width: 0.5px;
                 border-color: color.$secondary;
                 margin: 0;
             }
@@ -35,8 +36,8 @@
                     border-top: 1px solid color.$offBackground;
                 }
                 .month {
-                    width: 6rem;
-                    height: 6rem;
+                    width: 7rem;
+                    height: 7rem;
                     display: flex;
                     padding: 0.5rem;
                     font-size: 0.8em;
@@ -64,48 +65,31 @@
                 }
                 .books {
                     display: flex;
-                    gap: 1%;
+                    gap: 1.33%;
                     row-gap: 1.5em;
                     flex-wrap: wrap;
                     width: 100%;
                     .chronicle-book-item {
                         width: 32%;
-                    }
-                }
-                .books.cyan {
-                    .chronicle-book-item {
-                        .content {
-                            .title {
-                                color: color.$secondary;
-                            }
+                        .title {
+                            font-weight: bold;
                         }
                     }
                 }
-                .books.rust {
-                    .chronicle-book-item {
-                        .content {
-                            .title {
-                                color: color.$primary-text;
-                            }
-                        }
-                    }
-                }
-                .books.frost {
-                    .chronicle-book-item {
-                        .content {
-                            .title {
-                                color: color.$bluebellFrost;
-                            }
-                        }
-                    }
-                }
-                .books.red {
-                    .chronicle-book-item {
-                        .content {
-                            .title {
-                                color: color.$vermillionRed;
-                            }
-                        }
+            }
+        }
+    }
+}
+
+@include media.phone-css {
+    .chronicle-book-list {
+        .year-item {
+            .months {
+                .month-item {
+                    gap: 1.5em;
+                    .books {
+                        gap: 0.5em;
+                        row-gap: 1em;
                     }
                 }
             }

@@ -7,7 +7,8 @@
 
 @include media.phone-css {
     .footer {
-        padding: 1em 0 2.5em;
+        font-size: 0.7em;
+        padding: 1em 0 2em;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;

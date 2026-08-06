@@ -11,6 +11,22 @@ $side-section-width: 41vw;
     height: 100vh;
     background-color: color.$secondary;
     z-index: 1;
+    overflow: hidden;
+    .side-section-content {
+        height: 100%;
+        animation: sideSectionSlideUp 0.5s cubic-bezier(0.18, 1, 0.22, 1);
+    }
+}
+
+@keyframes sideSectionSlideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @include media.phone-css {
@@ -18,7 +34,7 @@ $side-section-width: 41vw;
         width: 100%;
         position: unset;
     };
-    .side-section.reviews, .side-section.genres {
+    .side-section.reviews, .side-section.genres, .side-section.discovery {
         display: none;
     }
 }

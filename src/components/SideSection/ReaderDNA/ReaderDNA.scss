@@ -1,0 +1,63 @@
+@use "../../../assets/scss/_colors.scss" as color;
+
+.reader-dna {
+    padding: 3.5em 3em;
+    &>.heading {
+        font-family: 'Anton';
+        span {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            color: rgba(color.$offwhite, 0.8);
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1.75em;
+            margin: 0;
+            padding: 0.4em 0;
+        }
+    }
+    hr {
+        border: none;
+        margin: 1em 0;
+        border-top: 1px solid rgba(color.$offwhite, 0.3);
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .content {
+        .most-extreme {
+            .heading {
+                font-weight: bold;
+            }
+            .list {
+                font-size: 0.75em;
+                padding-top: 1em;
+                display: flex;
+                flex-direction: column;
+                gap: 0.85em;
+                .item {
+                    display: flex;
+                    gap: 0.8em;
+                    span {
+                        font-weight: 500;
+                        width: 40%;
+                    }
+                    button {
+                        all: unset;
+                        letter-spacing: 2px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        &:hover {
+                            text-shadow: 0 0 8px color.$offwhite;
+                        }
+                    }
+                }
+            }
+        }
+        .select-book-message {
+            font-weight: 200;
+            font-size: 0.8em;
+            font-style: italic;
+        }
+    }
+}

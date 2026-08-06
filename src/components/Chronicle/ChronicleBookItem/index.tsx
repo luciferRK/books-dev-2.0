@@ -1,9 +1,9 @@
 import React from "react";
-import type { Book } from "../../../context/types";
+import type { Book } from "../../../store/types";
 import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 import "./ChronicleBookItem.scss";
 import { useNavigate } from "react-router-dom";
-import useGlobalAction from "../../../context/actions/GlobalAction";
+import { useGlobalActions } from "../../../store/global/useGlobal";
 
 interface ChronicleBookItemProps {
   book: Book;
@@ -11,7 +11,7 @@ interface ChronicleBookItemProps {
 
 const ChronicleBookItem: React.FC<ChronicleBookItemProps> = (props) => {
   const { book } = props;
-  const { setBook } = useGlobalAction();
+  const { setBook } = useGlobalActions();
   const navigate = useNavigate();
 
   return (

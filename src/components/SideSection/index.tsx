@@ -1,11 +1,12 @@
 import React from "react";
 import Favourite from "../Favourite";
 import "./SideSection.scss";
-import useHomeAction from "../../context/actions/HomeAction";
-import type { ExpandedMenuOptionValue } from "../../context/types";
+import { useActivePage } from "../../store/home/useHome";
+import type { ExpandedMenuOptionValue } from "../../store/types";
 import Genres from "./Genres";
 import { classNames } from "uixtra/utils";
 import CurrentlyReading from "./CurrentlyReading";
+import ReaderDNA from "./ReaderDNA";
 
 const renderSideSectionComponent = (selectedSection: ExpandedMenuOptionValue) => {
   switch (selectedSection) {
@@ -13,18 +14,21 @@ const renderSideSectionComponent = (selectedSection: ExpandedMenuOptionValue) =>
       return <CurrentlyReading />
     case 'genres':
       return <Genres />
+    case 'discovery':
+      return <ReaderDNA />
     default:
       return <Favourite />
   }
 }
 
 const SideSection: React.FC = () => {
-  const { homeState } = useHomeAction();
-  const {activePage } = homeState;
+  const activePage = useActivePage();
 
   return (
     <div className={classNames("side-section", activePage)}>
-      {renderSideSectionComponent(activePage)}
+      <div className="side-section-content" key={activePage}>
+        {renderSideSectionComponent(activePage)}
+      </div>
     </div>
   );
 };

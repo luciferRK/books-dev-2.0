@@ -1,16 +1,15 @@
 import React from "react";
 import "./HomeHeading.scss";
 import { HEADINGS, MOBILE_HEADINGS } from "../../utils/constants";
-import useHomeAction from "../../context/actions/HomeAction";
+import { useActivePage, useMenuOptions } from "../../store/home/useHome";
 import { classNames } from "uixtra/utils";
-import useGlobalAction from "../../context/actions/GlobalAction";
+import { useIsMobileView } from "../../store/global/useGlobal";
 import { ShowIfElse } from "uixtra/components";
 
 const HomeHeading = React.forwardRef<HTMLDivElement>((__, ref) => {
-  const { homeState, MenuOptions } = useHomeAction();
-  const { state } = useGlobalAction();
-  const { isMobileView } = state;
-  const { activePage } = homeState;
+  const MenuOptions = useMenuOptions();
+  const isMobileView = useIsMobileView();
+  const activePage = useActivePage();
 
   const activeOptionIndex = React.useMemo(
     () => MenuOptions.findIndex((option) => option.isSelected),
@@ -23,7 +22,7 @@ const HomeHeading = React.forwardRef<HTMLDivElement>((__, ref) => {
   } as React.CSSProperties;
 
   return (
-    <div className={classNames("home-heading", {"genres": activePage === "genres"})} id="home-heading" ref={ref}>
+    <div className={classNames("home-heading", activePage)} id="home-heading" ref={ref}>
       <div className="home-heading-content">
         <div className="main-heading">
           <ShowIfElse if={isMobileView}>

@@ -1,20 +1,14 @@
 import React from "react";
 import "./CurrentlyReading.scss";
-import useGlobalAction from "../../../context/actions/GlobalAction";
-import type { Book } from "../../../context/types";
+import { useAllBooks } from "../../../store/global/useGlobal";
+import type { Book } from "../../../store/types";
 import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 import { monthsAgo } from "../../../utils";
 import HazyBox from "../../ui/HazyBox";
-import ChronicleBookList from "../../Chronicle";
 import ChronicleBookItem from "../../Chronicle/ChronicleBookItem";
 
-interface CurrentlyReadingProps {
-
-}
-
-const CurrentlyReading: React.FC<CurrentlyReadingProps> = (props) => {
-  const { state } = useGlobalAction();
-  const { allBooks } = state;
+const CurrentlyReading: React.FC = () => {
+  const allBooks = useAllBooks();
 
   const {
     thisYearStats,

@@ -198,6 +198,13 @@
                 }
             }
         }
+        @include media.phone-css {
+            .home-heading.discovery {
+                @include mixin.home-page-header-shrink-timeline(
+                    home-heading-shrink-animation-discovery
+                )
+            }
+        }
     }
 }
 
@@ -225,6 +232,15 @@
             max-height: 25vh;
         }
         to {
+            max-height: constant.$mobile-header-height;
+        }
+    }
+
+    @keyframes home-heading-shrink-animation-discovery {
+        0% {
+            max-height: 25vh;
+        }
+        50% {
             max-height: constant.$mobile-header-height;
         }
     }

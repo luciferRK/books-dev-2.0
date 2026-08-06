@@ -1,14 +1,19 @@
 import React, { useMemo } from "react";
 import "./BookList.scss";
 import { useNavigate } from "react-router-dom";
-import useGlobalAction from "../../context/actions/GlobalAction";
+import {
+  useAllBooks,
+  useFavBook,
+  useGenreInfo,
+  useGlobalActions,
+} from "../../store/global/useGlobal";
 import BookItem from "../BookItem";
 import { classNames } from "uixtra/utils";
 import "../HomePageContent/HomePageContent.scss";
-import useHomeAction from "../../context/actions/HomeAction";
+import { useActiveGenre, useActivePage } from "../../store/home/useHome";
 import { Show } from "uixtra/components";
 import GenreHeading from "./GenreHeading";
-import type { Book } from "../../context/types";
+import type { Book } from "../../store/types";
 
 interface BookListProps {
   homeHeadingRef: React.RefObject<HTMLDivElement>;
@@ -16,14 +21,19 @@ interface BookListProps {
 
 const BookList: React.FC<BookListProps> = (props) => {
   const { homeHeadingRef } = props;
-  const { homeState } = useHomeAction();
-  const { setBook, getBooks } = useGlobalAction();
-  const { activePage, activeGenre } = homeState;
+  const activePage = useActivePage();
+  const activeGenre = useActiveGenre();
+  const { setBook, getBooks } = useGlobalActions();
+  // Subscribe to the underlying data so the derived list recomputes when books
+  // load or the genre buckets change (getBooks itself is a stable reference).
+  const allBooks = useAllBooks();
+  const genreInfo = useGenreInfo();
+  const favBook = useFavBook();
   const navigate = useNavigate();
 
   const favRemovedReadList = useMemo<Book[]>(() => {
     return getBooks(activePage, activeGenre);
-  }, [getBooks, activeGenre, activePage]);
+  }, [getBooks, activeGenre, activePage, allBooks, genreInfo, favBook]);
 
   return (
     <div className="book-list home-scroll-section">
