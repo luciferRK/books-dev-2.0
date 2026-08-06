@@ -1,14 +1,54 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
+@use "../../assets/scss/_scssConstant" as constant;
 
 .book-list {
     .book-list-content {
-        width: 50%;
-        overflow-y: auto;
-        .book {
-            width: 5rem;
-            height: 5rem;
-            background-color: color.$white;
-            margin-bottom: 1rem;
+        .books {
+            margin: 2em 5em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8%;
+            row-gap: 2em;
+        }
+        // Genre Content
+        .genre-books {
+            margin-top:  1em;
+            margin-left: 4em;
+            gap: 0;
+            row-gap: 2em;
+            .book-item {
+                width: 25%;
+                .cover-image {
+                    img {
+                        height: 11em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media.phone-css {
+    .book-list {
+        .book-list-content {
+            .books {
+                margin: 1.5em 1em;
+                justify-content: space-around;
+            }
+            .genre-books {
+                margin: 1em 2em 1em 2.5em;
+                justify-content: space-around;
+                .book-item {
+                    width: 50%;
+                    .cover-image {
+                        img {
+                            height: 12em;
+                        }
+                    }
+                }
+            }
         }
     }
 }

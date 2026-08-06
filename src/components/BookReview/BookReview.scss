@@ -1,13 +1,80 @@
-@use "../../assets/scss/_colors.scss";
+@use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
 
 .book-review {
     width: 41%;
-    min-height: 100dvh;
-    overflow-y: auto;
+    min-height: 100vh;
+    z-index: 1;
     .book-review-content {
         transform: translateY(100%);
-        padding: 3rem 3rem;
-        height: 100%;
+        padding: 3em 3em;
+        overflow-y: auto;
+        height: 100vh;
+        &::-webkit-scrollbar {
+            width: 5px;
+            background-color: color.$background;
+        }
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: color.$background;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: color.$primary;
+            border-radius: 5px;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .back {
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+                text-decoration: none;
+                color: color.$primary-text;
+                .icon {
+                    width: 1.2em;
+                    height: 1.2em;
+                    fill: color.$primary;
+                }
+            }
+            .rating {
+                .star {
+                    height: 2.75em;
+                }
+            }
+        }
+        .review {
+            font-size: 0.85em;
+            margin-top: 2.9em;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75em;
+        }
+    }
+}
+
+@include media.phone-css {
+    .book-review {
+        width: 100%;
+        .book-review-content {
+            padding: 2.5em 2.5em;
+            height: auto;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            .top-section {
+                justify-content: flex-end;
+                .back {
+                    display: none;
+                }
+                .rating {
+                    .star {
+                        height: 2rem;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -32,6 +99,7 @@
 .enter {
     .book-review {
         .book-review-content {
+            overflow-y: hidden;
             animation: appearFromBottomBookReview 0.7s
                 cubic-bezier(0.18, 1, 0.22, 1) forwards;
         }
@@ -41,8 +109,17 @@
 .exit {
     .book-review {
         .book-review-content {
+            overflow-y: hidden;
             animation: disappearToBottomBookReview 0.5s
                 cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        }
+    }
+}
+
+.idle {
+    .book-review {
+        .book-review-content {
+            transform: unset;
         }
     }
 }

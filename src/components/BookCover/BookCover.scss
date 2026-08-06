@@ -1,8 +1,115 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
 
 .book-cover {
-    height: 100dvh;
+    height: 100vh;
     background-color: color.$secondary;
+    .book-cover-content {
+        height: 100%;
+        width: 41vw;
+        .image-and-details {
+            display: flex;
+            width: 83%;
+            gap: 2em;
+            height: 52%;
+            align-items: flex-end;
+            margin: auto;
+            .cover-image {
+                width: fit-content;
+                img {
+                    height: 40vh;
+                }
+            }
+            .details {
+                height: 40vh;
+                display: flex;
+                width: 60%;
+                & > .column {
+                    width: 50%;
+                    height: 98%;
+                }
+                .column {
+                    gap: 1em;
+                    .detail-section {
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 0.7em;
+                        gap: 0.7em;
+                        .heading {
+                            color: color.$offwhite;
+                        }
+                        .list {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.55em;
+                        }
+                    }
+                    .author,
+                    .buy {
+                        .row {
+                            gap: 0.7em;
+                        }
+                        .icon {
+                            cursor: pointer;
+                            width: 1.55em;
+                            height: 1.55em;
+                            .social-icon,
+                            .buy-icon {
+                                path {
+                                    transition: fill 0.2s ease-in-out;
+                                }
+                            }
+                            &:hover {
+                                .social-icon {
+                                    path {
+                                        /* fill: #1da1f2; */
+                                        fill: url(#rg);
+                                    }
+                                }
+                                .buy-icon {
+                                    path {
+                                        fill: color.$offwhite;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .name-and-description {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            width: 83%;
+            margin: auto;
+            height: 48%;
+            .author-name {
+                font-size: 1.1em;
+                margin-bottom: 0.45em;
+            }
+            .book-name {
+                font-size: 3em;
+                font-weight: bold;
+                margin-bottom: 0.23em;
+            }
+            .description-list {
+                font-size: 0.7em;
+                display: flex;
+                gap: 5%;
+                .description-column {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.6em;
+                    width: 47.5%;
+                    .description-item {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .book-cover.animated {
@@ -11,10 +118,67 @@
     left: 0;
     top: 0;
     overflow: hidden;
+    z-index: 1010;
+    @include media.phone-css {
+        /* display: none; */
+    }
 }
 
 .book-cover:not(.animated) {
-    width: 41dvw;
+    width: 41vw;
+    @include media.phone-css {
+        width: 100vw;
+    }
+}
+
+@include media.phone-css {
+    .book-cover {
+        .book-cover-content {
+            width: 100vw;
+            .image-and-details {
+                height: 45%;
+                .cover-image {
+                    img {
+                        height: 34vh;
+                    }
+                }
+                .details {
+                    height: 100%;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    gap: 0.5em;
+                    margin-bottom: 0.5em;
+                    & > .column {
+                        width: 100%;
+                        height: auto;
+                    }
+                    .column {
+                        .detail-section {
+                            gap: 0.6em;
+                            .list {
+                                gap: 0.4em;
+                            }
+                        }
+                    }
+                }
+            }
+            .name-and-description {
+                margin-top: 1em;
+                height: auto;
+                justify-content: flex-start;
+                .author-name {
+                    display: none;
+                }
+                .description-list {
+                    flex-direction: column;
+                    gap: 0.5em;
+                    .description-column {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @keyframes appearFromLeftBookCoverSkeleton {
@@ -22,13 +186,22 @@
         width: 0;
     }
     100% {
-        width: 41dvw;
+        width: 41vw;
+    }
+}
+
+@keyframes appearFromLeftBookCoverSkeletonPhone {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100vw;
     }
 }
 
 @keyframes disappearToLeftBookCoverSkeleton {
     0% {
-        width: 41dvw;
+        width: 41vw;
     }
     100% {
         width: 0;
@@ -39,7 +212,10 @@
     .book-cover.animated {
         animation: appearFromLeftBookCoverSkeleton 1.2s
             cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        animation-delay: 0.1s;
+        @include media.phone-css {
+            animation: appearFromLeftBookCoverSkeletonPhone 1.2s
+                cubic-bezier(0.18, 1, 0.22, 1) forwards;
+        }
     }
 }
 

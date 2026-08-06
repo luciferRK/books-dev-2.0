@@ -1,5 +1,20 @@
+@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_media.scss" as media;
+
 .home {
-    width: 100dvw;
-    min-height: 100dvh;
-    height: 100dvh;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+    timeline-scope: mixin.$home-page-header-var;
+    overflow: hidden;
+}
+
+@include media.phone-css {
+    .home {
+        display: flex;
+        flex-direction: column;
+    }
+    .home.chronicle {
+        height: auto;
+    }
 }

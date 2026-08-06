@@ -1,19 +1,23 @@
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.scss";
 import Routes from "./components/Routes";
-import AllContextProvider from "./context/AllContextProvider";
 import Header from "./components/Header";
+import MobileFooter from "./components/Footer";
+import ViewportWatcher from "./components/ViewportWatcher";
+import { initBooks } from "./store/initBooks";
 
 function App() {
+  React.useEffect(() => {
+    void initBooks();
+  }, []);
+
   return (
     <BrowserRouter>
-      <AllContextProvider>
-        <Header />
-        <Routes />
-      </AllContextProvider>
+      <ViewportWatcher />
+      <Header />
+      <Routes />
+      <MobileFooter />
     </BrowserRouter>
   );
 }

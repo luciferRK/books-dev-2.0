@@ -1,0 +1,36 @@
+@use "../../assets/scss/_media.scss" as media;
+@use "../../assets/scss/_colors.scss" as color;
+
+.footer {
+    display: none;
+}
+
+@include media.phone-css {
+    .footer {
+        font-size: 0.7em;
+        padding: 1em 0 2em;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 1em;
+        font-family: "Poppins";
+        background-color: color.$offBackground;
+        .copyright {
+            span {
+                color: color.$primary-text;
+                font-weight: thin;
+            }
+        }
+        .social {
+            display: flex;
+            gap: 1em;
+            .icon-wrapper {
+                width: 2em;
+                height: 2em;
+                border-radius: 50%;
+                background-color: rgba(color.$primary, 0.3);
+                padding: 0.45em;
+            }
+        }
+    }
+}

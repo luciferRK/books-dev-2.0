@@ -1,0 +1,12 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    justify-content: flex-end;
+    .star {
+        height: 2.75em;
+        width: fit-content;
+    }
+}

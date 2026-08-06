@@ -1,0 +1,49 @@
+@use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
+
+@mixin book-item-interactable {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+    .cover-image {
+        @include book-item-interactable();
+        img {
+            height: 12em;
+        }
+    }
+    .author-name {
+        margin-top: 0.7em;
+        @include book-item-interactable();
+        color: color.$white;
+        font-size: 0.75em;
+    }
+    .title {
+        font-size: 1em;
+        margin-top: 0.6em;
+        letter-spacing: 0.02em;
+        @include book-item-interactable();
+        color: color.$primary-text;
+        font-weight: bold;
+        max-width: 85%;
+    }
+    .rating {
+        justify-content: flex-start;
+        gap: 0.2em;
+        padding-top: 0.5em;
+        .star {
+            height: 0.6em;
+        }
+    }
+    @include media.phone-css {
+        width: 40%;
+    }
+    &[data-disabled='true'] {
+        pointer-events: none;
+        cursor: default;
+    }
+}

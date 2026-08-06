@@ -1,0 +1,39 @@
+@use "../../../assets/scss/_colors.scss" as color;
+@use "../../../assets/scss/_media.scss" as media;
+
+.chronicle-book-item {
+    all: unset;
+    display: flex;
+    gap: 1.3em;
+    height: 7em;
+    cursor: pointer;
+    .cover-image {
+        img {
+            height: 100%;
+        }
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8em;
+        .title {
+            font-size: 1em;
+        }
+        .author {
+            font-size: 0.7em;
+        }
+    }
+}
+
+@include media.phone-css {
+	.chronicle-book-item {
+        flex-direction: column;
+        height: auto;
+        gap: 0.3em;
+        .cover-image {
+            img {
+                height: 7em;
+            }
+        }
+	}
+}

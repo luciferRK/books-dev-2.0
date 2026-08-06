@@ -1,58 +1,92 @@
 @use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
+@use "../../assets/scss/_mixins.scss" as mixin;
+@use "../../assets/scss/_scssConstant.scss" as constant;
 
 @mixin header-width {
     width: 59%;
 }
 
 .home-heading {
+    transition: height 0.5s cubic-bezier(0.18, 1, 0.22, 1);
     position: relative;
     width: 100dvw;
-    height: 60dvh;
+    height: var(--home-heading-height);
     background-color: color.$primary;
-    z-index: -1;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden;
     .home-heading-content {
         display: flex;
         justify-content: space-between;
-        padding: 4rem 4rem;
+        padding: 4em 4em;
+        height: 100%;
         @include header-width();
         .main-heading {
+            all: unset;
             margin: 0;
-            font-size: 4.5rem;
-            width: 50%;
+            font-size: 4.5em;
+            width: 60%;
             font-family: "Anton", sans-serif;
             white-space: wrap;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
         .expanded-options {
+            --option-gap: 2em;
+            --option-height: 1.2em;
+            --option-transform-adjust: 1.35em;
+            --selected-option-index: 0;
+            --selected-option-opacity: 1;
+
             margin: 5% 10% 0 0;
+            transition: margin 0.5s cubic-bezier(0.18, 1, 0.22, 1);
+            margin-top: calc(var(--home-heading-height) / 12dvh * 1%);
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: var(--option-gap);
+            position: relative;
+            .selection-indicator {
+                position: absolute;
+                left: 0;
+                top: calc(
+                    (var(--option-height) + var(--option-gap)) *
+                        var(--selected-option-index) +
+                        (var(--option-height) / 2)
+                );
+                width: 0.2em;
+                height: var(--option-height);
+                background-color: color.$white;
+                border-radius: 999px;
+                transform: translateY(-50%);
+                transition:
+                    top 0.32s cubic-bezier(0.22, 0.61, 0.36, 1),
+                    opacity 0.2s ease;
+                opacity: var(--selected-option-opacity);
+                pointer-events: none;
+                will-change: top;
+            }
             .option {
+                all: unset;
                 font-family: "Inter", sans-serif;
                 font-weight: 600;
                 position: relative;
-            }
-            .option ~ .selected {
-                &:before {
-                    content: "";
-                    position: absolute;
-                    left: -0.7rem;
-                    width: 100%;
-                    height: 1.2rem;
-                    width: 0.2rem;
-                    background-color: color.$white;
-                }
+                cursor: pointer;
+                padding-left: 0.7em;
+                line-height: var(--option-height);
+                min-height: var(--option-height);
+                display: block;
             }
         }
     }
 }
 
-@keyframes vanishUpHomeHeading {
-    0% {
-        height: 60dvh;
+.genres {
+    .home-heading-content {
+        padding-bottom: 3em;
     }
+}
+
+@keyframes vanishUpHomeHeading {
     100% {
         height: 0;
     }
@@ -63,7 +97,7 @@
         height: 0;
     }
     100% {
-        height: 60dvh;
+        height: var(--home-heading-height);
     }
 }
 
@@ -71,7 +105,6 @@
     .home-heading {
         animation: vanishUpHomeHeading 0.8s cubic-bezier(0.18, 1, 0.22, 1)
             forwards;
-        overflow: hidden;
     }
 }
 
@@ -79,6 +112,180 @@
     .home-heading {
         animation: appearFromTopHomeHeading 0.8s
             cubic-bezier(0.3, 0.42, 0.6, 0.87) forwards;
-        overflow: hidden;
+    }
+}
+
+@keyframes home-heading-shrink-animation {
+    from {
+        max-height: var(--home-heading-height);
+    }
+    to {
+        max-height: constant.$header-height;
+    }
+}
+
+@keyframes home-heading-options-vanish {
+    from {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes home-heading-options-move {
+    from {
+        transform: translateY(0);
+        gap: 2em;
+    }
+    to {
+        transform: translateY(
+            calc(
+                -2.3em -
+                    (var(--selected-option-index) *
+                        (var(--option-transform-adjust)))
+            )
+        );
+        margin: 0 10% 0 0;
+        gap: 0;
+    }
+}
+
+@keyframes home-heading-main-heading-vanish {
+    to {
+        transform: translateX(-150%);
+    }
+}
+
+@keyframes expanded-options-indicator-vanish {
+    20% {
+        display: none;
+    }
+    to {
+        display: none;
+    }
+}
+
+@supports (animation-timeline: scroll()) {
+    .idle {
+        .home-heading {
+            @include mixin.home-page-header-shrink-timeline(
+                home-heading-shrink-animation
+            );
+            .home-heading-content {
+                .main-heading {
+                    @include mixin.home-page-header-shrink-timeline(
+                        home-heading-main-heading-vanish
+                    );
+                }
+                .expanded-options {
+                    @include mixin.home-page-header-shrink-timeline(
+                        home-heading-options-move
+                    );
+                    .selection-indicator {
+                        @include mixin.home-page-header-shrink-timeline(
+                            expanded-options-indicator-vanish
+                        );
+                    }
+                }
+                .option:not(.selected) {
+                    @include mixin.home-page-header-shrink-timeline(
+                        home-heading-options-vanish
+                    );
+                }
+            }
+        }
+        @include media.phone-css {
+            .home-heading.discovery {
+                @include mixin.home-page-header-shrink-timeline(
+                    home-heading-shrink-animation-discovery
+                )
+            }
+        }
+    }
+}
+
+@include media.phone-css {
+    .home-heading {
+        height: 25dvh;
+        .home-heading-content {
+            width: 100%;
+            align-items: flex-end;
+            padding: 1em 1em 2em;
+            .main-heading {
+                text-align: center;
+                font-size: 2em;
+                width: 100%;
+                letter-spacing: 0.1em;
+            }
+            .expanded-options {
+                display: none;
+            }
+        }
+    }
+
+    @keyframes home-heading-shrink-animation {
+        from {
+            max-height: 25vh;
+        }
+        to {
+            max-height: constant.$mobile-header-height;
+        }
+    }
+
+    @keyframes home-heading-shrink-animation-discovery {
+        0% {
+            max-height: 25vh;
+        }
+        50% {
+            max-height: constant.$mobile-header-height;
+        }
+    }
+
+    @keyframes home-heading-main-heading-vanish {
+        from {
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-150%);
+            opacity: 0;
+            display: none;
+        }
+    }
+}
+
+@include media.small {
+    .home-heading {
+        .home-heading-content {
+            .main-heading {
+                font-size: 3.5em;
+            }
+        }
+    }
+}
+
+@include media.min-width(1500px) {
+    .home-heading {
+        .home-heading-content {
+            padding: 4em 7em;
+            align-items: center;
+            .expanded-options {
+                margin-top: calc(var(--home-heading-height) / 10dvh * 1%);
+                align-self: flex-start;
+            }
+        }
+    }
+}
+
+@include media.min-width(1600px) {
+    .home-heading {
+        .home-heading-content {
+            .main-heading {
+                width: 50%;
+            }
+        }
     }
 }

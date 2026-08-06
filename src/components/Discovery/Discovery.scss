@@ -1,0 +1,130 @@
+@use "../../assets/scss/_colors.scss" as color;
+@use "../../assets/scss/_media.scss" as media;
+
+.discovery {
+    .discovery-content {
+        padding: 2.5em 3em 4em;
+        display: flex;
+        flex-direction: column;
+        hr {
+            border: none;
+            border-top: 1px solid rgba(color.$offwhite, 0.3);
+            margin: 1em 0;
+        }
+        .dna-section {
+            padding-bottom: 2em;
+            display: flex;
+            justify-content: space-between;
+            section {
+                width: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0.8em;
+                .sub-heading {
+                    font-size: 0.8em;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    padding-bottom: 1em;
+                }
+                .item {
+                    width: 100%;
+                    height: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 0.8em;
+                    span {
+                        &:first-child {
+                            width: 24%;
+                        }
+                        &:last-child {
+                            width: 8%;
+                            font-size: 0.9em;
+                        }
+                    }
+                    .progress-bar {
+                        width: 63%;
+                    }
+                    .rating {
+                        gap: 0.2em;
+                        svg {
+                            height: 1em;
+                        }
+                    }
+                }
+            }
+        }
+        .heading-section{
+            display: flex;
+            justify-content: space-between;
+            padding: 1em 0;
+            align-items: center;
+            .heading {
+                font-weight: 200;
+            }
+            .genre-dropdown-section {
+                display: flex;
+                align-items: center;
+                gap: 0.4em;
+                .genre-dropdown {
+                    all: unset;
+                    background-color: color.$offBackground;
+                    padding: 0.25em 0.6em;
+                    border-radius: 0.5em;
+                }
+            }
+        }
+        .axis-plot-4 {
+            --plot-size: 100%;
+            .plot-axis-label {
+                letter-spacing: 1px;
+            }
+            .plot-area {
+                .plot-point {
+                    .plot-point-tooltip {
+                        padding: 0.8em 0.8em;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5em;
+                        .rating {
+                            gap: 0.2em;
+                            svg {
+                                height: 0.7em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media.phone-css {
+	.discovery {
+    	.discovery-content {
+            padding: 2em;
+            .heading-section {
+                flex-direction: column;
+                gap: 1em;
+                align-items: flex-start;
+                padding-top: 0;
+            }
+            hr {
+                margin: 2em 0;
+                order: -1
+            }
+            .dna-section {
+                flex-direction: column;
+                gap: 3em;
+                padding: 0;
+                section {
+                    width: 100%;
+                }
+            }
+            .graph-section {
+                order: -2;
+            }
+    	}
+	}
+}

@@ -1,3 +1,38 @@
-.root {
-    position: relative;
+@use "./assets/scss/_font.scss";
+
+// Only the enter phase gets a wrapper-level timer. The `onAnimationEnd` handler
+// in Routes.tsx ends the enter phase on THIS animation rather than on whichever
+// child animation finishes first, so the reveal animations run to completion
+// instead of snapping. Duration matches the longest enter child animation
+// (BookCover skeleton, 1s). The exit phase keeps its original behaviour of
+// advancing as soon as its animations finish, so exits aren't padded out.
+.pageWrapper {
+    &.enter {
+        animation: pageTransitionTick 1s linear forwards;
+    }
 }
+
+@keyframes pageTransitionTick {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+//mac: 1470 746
