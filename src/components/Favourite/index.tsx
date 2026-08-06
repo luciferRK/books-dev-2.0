@@ -1,14 +1,14 @@
 import type React from "react";
 import "./Favourite.scss";
-import useGlobalAction from "../../context/actions/GlobalAction";
+import { useFavBook, useGlobalActions } from "../../store/global/useGlobal";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import { BrushMaskButton } from "../Button";
+import { BrushMaskButton } from "../ui/Button";
 
 const Favourite: React.FC = () => {
-  const { state, setBook } = useGlobalAction();
-  const { favBook } = state;
+  const favBook = useFavBook();
+  const { setBook } = useGlobalActions();
   const navigate = useNavigate();
 
   const description = useMemo(
@@ -17,8 +17,7 @@ const Favourite: React.FC = () => {
   );
 
   return (
-    <div className="favourite">
-      <div className="favourite-content">
+      <div className="favourite">
         <div className="top-section section">
           <div className="left heading">
             <div>One of my</div>
@@ -56,7 +55,6 @@ const Favourite: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

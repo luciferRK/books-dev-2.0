@@ -5,15 +5,6 @@
 
 .book-list {
     .book-list-content {
-        width: 59%;
-        height: 40vh;
-        overflow-y: auto;
-        transform: translateY(300%);
-        transition: transform 0.5s ease-in-out;
-        scroll-timeline-name: mixin.$home-page-header-var;
-        &::-webkit-scrollbar {
-            width: 0;
-        }
         .books {
             margin: 2em 5em;
             display: flex;
@@ -21,92 +12,43 @@
             gap: 8%;
             row-gap: 2em;
         }
-    }
-}
-
-@keyframes content-up {
-    from {
-        transform: translateY(300%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-@keyframes content-down {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(300%);
-    }
-}
-
-@keyframes book-list-expand {
-    from {
-        height: 40dvh;
-    }
-    to {
-        height: calc(100dvh - constant.$header-height);
+        // Genre Content
+        .genre-books {
+            margin-top:  1em;
+            margin-left: 4em;
+            gap: 0;
+            row-gap: 2em;
+            .book-item {
+                width: 25%;
+                .cover-image {
+                    img {
+                        height: 11em;
+                    }
+                }
+            }
+        }
     }
 }
 
 @include media.phone-css {
     .book-list {
         .book-list-content {
-            height: 75vh;
-            width: 100%;
             .books {
                 margin: 1.5em 1em;
                 justify-content: space-around;
             }
-        }
-    }
-    @keyframes book-list-expand {
-        from {
-            height: 75dvh;
-        }
-        to {
-            height: calc(100dvh - constant.$header-height);
-        }
-    }
-}
-
-@supports (animation-timeline: scroll()) {
-    .idle {
-        .book-list {
-            .book-list-content {
-                @include mixin.home-page-header-shrink-timeline(
-                    book-list-expand
-                );
+            .genre-books {
+                margin: 1em 2em 1em 2.5em;
+                justify-content: space-around;
+                .book-item {
+                    width: 50%;
+                    .cover-image {
+                        img {
+                            height: 12em;
+                        }
+                    }
+                }
             }
-        }
-    }
-}
-
-.enter {
-    .book-list {
-        .book-list-content {
-            overflow-y: hidden;
-            animation: content-up 5s cubic-bezier(0.18, 1, 0.22, 1) forwards;
-            animation-delay: 1s;
-        }
-    }
-}
-
-.idle {
-    .book-list {
-        .book-list-content {
-            transform: unset;
-        }
-    }
-}
-
-.exit {
-    .book-list {
-        .book-list-content {
-            overflow-y: hidden;
-            animation: content-down 1s cubic-bezier(0.18, 1, 0.22, 1) forwards;
         }
     }
 }

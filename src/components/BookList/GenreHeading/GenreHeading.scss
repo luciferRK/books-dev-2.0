@@ -1,0 +1,84 @@
+@use "../../../assets/scss/colors" as color;
+@use "../../../assets/scss/media" as media;
+
+.genre-heading {
+    width: 100%;
+    padding: 1.5em 2em 2em 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    background-color: color.$background;
+    .genre-options-row {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        margin-bottom: 1em;
+        .scroll-arrow {
+            all: unset;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            background: color.$offBackground;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .genre-options {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            gap: 1em;
+            overflow-x: auto;
+            align-items: center;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            .option {
+                all: unset;
+                font-size: 0.875rem;
+                width: fit-content;
+                padding: 0.5rem 1rem;
+                background-color: color.$offBackground;
+                border-radius: 1.25rem;
+                white-space: nowrap;
+                cursor: pointer;
+            }
+            .option.selected {
+                background-color: color.$secondary;
+            }
+        }
+    }
+    .selected-genre {
+        display: flex;
+        gap: 1em;
+        height: auto;
+        align-items: center;
+        .column {
+            width: 0.3em;
+            align-self: stretch;
+            background-color: color.$secondary;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            h2 {
+                all: unset;
+                font-family: 'Anton';
+                font-size: 3rem;
+            }
+            span {
+                color: color.$secondary;
+            }
+        }
+    }
+}
+
+@include media.phone-css {
+	.genre-heading {
+	    padding: 1.5em 2em 2em 2em;
+	}
+}

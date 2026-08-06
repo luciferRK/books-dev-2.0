@@ -9,9 +9,12 @@
     overflow: hidden;
 }
 
-@include media.max-width(450px) {
+@include media.phone-css {
     .home {
         display: flex;
         flex-direction: column;
+    }
+    .home.chronicle {
+        height: auto;
     }
 }

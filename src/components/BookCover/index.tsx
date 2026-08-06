@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import "./BookCover.scss";
 import { classNames, ifElse, isEmpty } from "uixtra/utils";
-import useGlobalAction from "../../context/actions/GlobalAction";
+import { useBook } from "../../store/global/useGlobal";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import InstaIcon from "../Icon/Insta";
 import { Show } from "uixtra/components";
@@ -14,8 +14,7 @@ interface BookCoverProps {
 
 const BookCover: React.FC<BookCoverProps> = (props) => {
   const { animated = false } = props;
-  const { state } = useGlobalAction();
-  const { book } = state;
+  const book = useBook();
 
   const getDescriptionColumns: Array<Array<string>> = useMemo(() => {
     if (book.description.length === 2) {
