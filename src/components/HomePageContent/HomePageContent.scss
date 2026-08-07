@@ -62,9 +62,18 @@
 }
 
 @supports (animation-timeline: scroll()) {
-    .idle {
-        .home-scroll-content:not(.chronicle-book-list) {
-            @include mixin.home-page-header-shrink-timeline(home-content-expand);
+    @include media.min-width(450px) {
+         .idle {
+            .home-scroll-content {
+                @include mixin.home-page-header-shrink-timeline(home-content-expand);
+            }
+        }
+    }
+    @include media.phone-css {
+        .idle {
+            .home-scroll-content:not(.chronicle-book-list) {
+                @include mixin.home-page-header-shrink-timeline(home-content-expand);
+            }
         }
     }
 }
