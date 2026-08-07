@@ -4,6 +4,7 @@ import type { Book } from "../../store/types";
 import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { Show } from "uixtra/components";
 import Rating from "../Rating";
+import Img from "../Img";
 
 interface BookItemProps {
   book: Book;
@@ -17,7 +18,7 @@ const BookItem: React.FC<BookItemProps> = (props) => {
   return (
     <div className="book-item" onClick={onClick} data-disabled={disabled}>
       <div className="cover-image">
-        <img
+        <Img
           loading="lazy"
           src={`${BOOK_COVER_PREFIX}${book.image}`}
           alt={book.name}

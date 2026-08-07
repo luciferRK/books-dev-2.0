@@ -1,0 +1,59 @@
+@use "../../assets/scss/_colors.scss" as color;
+
+// Skeleton lives on the <img> background so it matches the image size.
+// Shimmer uses `background-position` since ::before/::after don't work on <img>.
+img.img {
+  // Fixed height + `ratio` constrain both dims; avoid stretching.
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  // Lazy image, not fetching yet: flat placeholder, no shimmer.
+  &.img-deferred {
+    background-color: rgba(color.$offwhite, 0.06);
+  }
+
+  // Downloading: tint + sweeping shimmer.
+  &.img-loading {
+    background-color: rgba(color.$offwhite, 0.09);
+    background-image: linear-gradient(
+      100deg,
+      rgba(color.$offwhite, 0) 30%,
+      rgba(color.$white, 0.18) 50%,
+      rgba(color.$offwhite, 0) 70%
+    );
+    background-size: 200% 100%;
+    animation: img-shimmer 1.4s linear infinite;
+  }
+
+  // Loaded: clear skeleton, fade in. Opacity animates only here, else it would
+  // hide the skeleton background during loading.
+  &.img-loaded {
+    background-image: none;
+    background-color: transparent;
+    animation: img-fade-in 0.35s ease;
+  }
+
+  // Failed: subtle error tint.
+  &.img-error {
+    background-color: rgba(color.$vermillionRed, 0.15);
+  }
+}
+
+@keyframes img-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@keyframes img-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

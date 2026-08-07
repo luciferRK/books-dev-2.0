@@ -7,6 +7,7 @@ import InstaIcon from "../Icon/Insta";
 import { Show } from "uixtra/components";
 import TwitterIcon from "../Icon/Twitter";
 import { AmazonAudibleIcon, AmazonIcon } from "../Icon/Amazon";
+import Img from "../Img";
 
 interface BookCoverProps {
   animated?: boolean;
@@ -61,7 +62,7 @@ const BookCover: React.FC<BookCoverProps> = (props) => {
       <div className="book-cover-content">
         <div className="image-and-details">
           <div className="cover-image">
-            <img src={`${BOOK_COVER_PREFIX}${book.image}`} alt={book.name} />
+            <Img src={`${BOOK_COVER_PREFIX}${book.image}`} alt={book.name} />
           </div>
           <div className="details">
             <div className="column space-between">

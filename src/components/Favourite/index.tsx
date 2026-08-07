@@ -5,6 +5,7 @@ import { BOOK_COVER_PREFIX } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
 import { BrushMaskButton } from "../ui/Button";
+import Img from "../Img";
 
 const Favourite: React.FC = () => {
   const favBook = useFavBook();
@@ -24,7 +25,7 @@ const Favourite: React.FC = () => {
             <div>Favourites</div>
           </div>
           <div className="right cover-image">
-            <img
+            <Img
               src={`${BOOK_COVER_PREFIX}${favBook.image}`}
               alt={favBook.name}
             />

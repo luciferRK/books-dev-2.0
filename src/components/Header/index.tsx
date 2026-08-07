@@ -5,6 +5,7 @@ import { useMenuOptions } from "../../store/home/useHome";
 import { and, classNames } from "uixtra/utils";
 import { useIsMobileView } from "../../store/global/useGlobal";
 import { useNavigate } from "react-router-dom";
+import Img from "../Img";
 
 const Header: React.FC = () => {
   const MenuOptions = useMenuOptions();
@@ -29,7 +30,7 @@ const Header: React.FC = () => {
       })}
     >
       <div className="logo-container">
-        <img src={Logo} className="logo" />
+        <Img src={Logo} className="logo" />
       </div>
       <div className="phone-expanded-options">
         <button

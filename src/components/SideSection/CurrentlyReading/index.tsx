@@ -6,6 +6,7 @@ import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 import { monthsAgo } from "../../../utils";
 import HazyBox from "../../ui/HazyBox";
 import ChronicleBookItem from "../../Chronicle/ChronicleBookItem";
+import Img from "../Img";
 
 const CurrentlyReading: React.FC = () => {
   const allBooks = useAllBooks();
@@ -68,7 +69,7 @@ const CurrentlyReading: React.FC = () => {
       <div className="book">
         <div className="heading">Currently Reading</div>
         <div className="content">
-          <img src={`${BOOK_COVER_PREFIX}${currentlyReadingBook.image}`} alt={currentlyReadingBook.name} />
+          <Img src={`${BOOK_COVER_PREFIX}${currentlyReadingBook.image}`} alt={currentlyReadingBook.name} />
           <div className="info">
             <div className="title">{currentlyReadingBook.name}</div>
             <div className="author">{currentlyReadingBook.author.name}</div>
