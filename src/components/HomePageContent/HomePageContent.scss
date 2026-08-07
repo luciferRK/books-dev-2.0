@@ -72,8 +72,7 @@
 .enter {
     .home-scroll-content {
         overflow-y: hidden;
-        animation: home-content-up 5s cubic-bezier(0.18, 1, 0.22, 1) forwards;
-        animation-delay: 1s;
+        animation: home-content-up 0.7s cubic-bezier(0.18, 1, 0.22, 1) 0.15s both;
     }
 }
 

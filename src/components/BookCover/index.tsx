@@ -62,7 +62,14 @@ const BookCover: React.FC<BookCoverProps> = (props) => {
       <div className="book-cover-content">
         <div className="image-and-details">
           <div className="cover-image">
-            <Img src={`${BOOK_COVER_PREFIX}${book.image}`} alt={book.name} />
+            <Img
+              src={ifElse(
+                isEmpty(book.image),
+                undefined,
+                `${BOOK_COVER_PREFIX}${book.image}`,
+              )}
+              alt={book.name}
+            />
           </div>
           <div className="details">
             <div className="column space-between">

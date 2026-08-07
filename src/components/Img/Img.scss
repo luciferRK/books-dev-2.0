@@ -8,6 +8,12 @@ img.img {
   background-repeat: no-repeat;
   background-position: center;
 
+  // No source: hide the browser's broken/alt placeholder but stay in flow so
+  // surrounding content doesn't shift.
+  &.img-empty {
+    visibility: hidden;
+  }
+
   // Lazy image, not fetching yet: flat placeholder, no shimmer.
   &.img-deferred {
     background-color: rgba(color.$offwhite, 0.06);
@@ -26,11 +32,15 @@ img.img {
     animation: img-shimmer 1.4s linear infinite;
   }
 
-  // Loaded: clear skeleton, fade in. Opacity animates only here, else it would
-  // hide the skeleton background during loading.
+  // Loaded: clear the skeleton. No fade here so cached images (already visible)
+  // don't blink.
   &.img-loaded {
     background-image: none;
     background-color: transparent;
+  }
+
+  // Fade in only after a real download, not for cached/instant images.
+  &.img-reveal {
     animation: img-fade-in 0.35s ease;
   }
 

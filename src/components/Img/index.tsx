@@ -2,7 +2,12 @@ import React from "react";
 import { classNames } from "uixtra/utils";
 import "./Img.scss";
 
-export type ImgStatus = "deferred" | "loading" | "loaded" | "error";
+export type ImgStatus =
+  | "empty"
+  | "deferred"
+  | "loading"
+  | "loaded"
+  | "error";
 
 interface ImgProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** Notified whenever the load status changes. */
@@ -30,8 +35,14 @@ const Img: React.FC<ImgProps> = ({
 }) => {
   const ref = React.useRef<HTMLImageElement>(null);
   const [status, setStatus] = React.useState<ImgStatus>(
-    loading === "lazy" ? "deferred" : "loading",
+    !src ? "empty" : loading === "lazy" ? "deferred" : "loading",
   );
+  // Only fade in on a real download; a cached image is already visible, so
+  // replaying the fade would make it blink (a "blip").
+  const [reveal, setReveal] = React.useState(false);
+  // Set true once the load is resolved synchronously (empty/cached) so the
+  // later `onLoad` event (which also fires for cached images) skips the fade.
+  const settledRef = React.useRef(false);
 
   const update = React.useCallback(
     (next: ImgStatus) => {
@@ -42,19 +53,33 @@ const Img: React.FC<ImgProps> = ({
   );
 
   // Keyed on `src` so changing it on a mounted <Img> resets the load state.
-  React.useEffect(() => {
+  // Runs before paint (and before the cached `load` event) so cached images are
+  // marked settled before `onLoad` can trigger the fade.
+  React.useLayoutEffect(() => {
+    settledRef.current = false;
     const el = ref.current;
     if (!el) {
       return;
     }
 
-    // Cached image may finish before `onLoad` attaches.
+    // No source: render nothing, no skeleton.
+    if (!src) {
+      settledRef.current = true;
+      setReveal(false);
+      update("empty");
+      return;
+    }
+
+    // Cached image is already decoded: show it with no fade -> no blip.
     if (el.complete && el.naturalWidth > 0) {
+      settledRef.current = true;
+      setReveal(false);
       update("loaded");
       return;
     }
 
     // Reset for this src so the skeleton shows while it downloads.
+    setReveal(false);
     update(loading === "lazy" ? "deferred" : "loading");
 
     // Lazy: flip `deferred` -> `loading` when it nears the viewport.
@@ -80,12 +105,18 @@ const Img: React.FC<ImgProps> = ({
     <img
       {...imgProps}
       ref={ref}
-      src={src}
-      className={classNames("img", className, `img-${status}`)}
+      src={src || undefined}
+      className={classNames("img", className, `img-${status}`, {
+        "img-reveal": reveal,
+      })}
       loading={loading}
       style={ratio != null ? { aspectRatio: ratio, ...style } : style}
       onLoad={(event) => {
-        update("loaded");
+        // Skip the fade for images already resolved as cached in the effect.
+        if (!settledRef.current) {
+          setReveal(true);
+          update("loaded");
+        }
         onLoad?.(event);
       }}
       onError={(event) => {
