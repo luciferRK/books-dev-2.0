@@ -46,6 +46,53 @@
       }
     },
     {
+      "urlName": "the-silent-patient",
+      "name": "The Silent Patient",
+      "image": "the_silent_patient.webp",
+      "rating": 4.5,
+      "description": [
+        "Alicia Berenson’s life is seemingly perfect. A famous painter married to an in-demand fashion photographer, she lives in a grand house with big windows overlooking a park in one of London’s most desirable areas. One evening her husband Gabriel returns home late from a fashion shoot, and Alicia shoots him five times in the face, and then never speaks another word.",
+        "Alicia’s refusal to talk, or give any kind of explanation, turns a domestic tragedy into something far grander, a mystery that captures the public imagination and casts Alicia into notoriety. The price of her art skyrockets, and she, the silent patient, is hidden away from the tabloids and spotlight at the Grove, a secure forensic unit in North London."
+      ],
+      "review": [
+        "Honestly, I thought I had already read this book. While talking to a friend, I realized I had been confusing it with The Patient. The moment I figured out that I had not actually read this one, I picked it up - and finished it in just 2 days. I think this might actually be my fastest read so far. It was one of those random picks too, because I had seen this book in stores so many times and always thought, “Yeah, I’ll read it someday,” but never actually got to it. Well, I finally did, and wow - this book really does live up to its title.",
+        "At first, my reaction was kind of, “Okay, the patient is silent, the doctor feels more like a detective, interesting enough.” The first 20% or so didn’t completely hook me right away, but after that, the book definitely pulled me in. It has this mystery-driven feel that isn’t exactly dark in an overwhelming way, but there’s definitely something unsettling about it. And emotionally too, it hits in a way that makes you think about childhood trauma, pain, and how people carry things silently for so long. In that sense, it felt like a book where some people would really feel seen.",
+        "The pace started off a little slow for me, but once it picked up, it became the kind of book where you don’t even realize how fast you’re moving through it. Parts 4 and 5 especially went by so smoothly that I didn’t even notice how quickly I was reading them, even though the book has a lot of chapters. So even with the slower beginning, it eventually became really gripping.",
+        "Alicia, to me, felt like the real victim through so much of the story. There’s a lot around her that makes you want to understand her better, and the book does a good job of making her feel layered without revealing too much too soon. Theo, on the other hand… by the end, I was definitely in full “what the fuck is this guy” mode.But until then, I really did feel like he was someone you wanted to trust and maybe even help. That’s one of the things this book does well - it makes you question almost everyone. And yes, trust is a huge issue here. I honestly didn’t know who to fully believe for most of the book. Side characters like Yuri, Diomedes, and Christian definitely added a lot to the story too, and they helped keep the whole thing moving in interesting ways.",
+        "The writing itself was easy to follow, which I appreciated. It never felt confusing just for the sake of being clever. And I really liked the therapy angle and the diary entries mixed in between, because they added to the story and made it feel more engaging. That structure definitely helped the book stand out for me.",
+        "As for the ending - no, I definitely did not see it coming. Nearing the end, I thought I had figured things out, only to realize I absolutely had not. I wouldn’t say the exact ending was my absolute favorite part, but the overall ending was still mind-blowing honestly. It was the kind of ending that makes you pause for a second and rethink everything you just read.",
+        "This book didn’t stay with me in a huge emotional way for too long, but while I was reading it, it absolutely had my attention. And I can easily say that anyone could enjoy this one. It’s short, fast to read, and has that kind of thriller setup that makes it easy to get pulled in even if you weren’t planning on reading it right away.",
+        "Overall, The Silent Patient is one of those books that really earns its reputation. The title fits perfectly, the mystery works well, and the story keeps you guessing right up until the end. I went in randomly, stayed for the ride, and came out pretty impressed."
+      ],
+      "literaryValues": {
+        "action": 28,
+        "contemplative": 62,
+        "dark": 78,
+        "light": 18,
+        "plot": 88,
+        "characters": 80,
+        "pacing": 84,
+        "prose": 70,
+        "world": 40,
+        "emotion": 74
+      },
+      "category": "read",
+      "genre": ["Mystery", "Psych Thriller", "Suspense"],
+      "author": {
+        "name": "Alex Michaelides",
+        "instagram": "https://www.instagram.com/alex.michaelides/",
+        "twitter": "https://x.com/AlexMichaelides"
+      },
+      "buyLinks": {
+        "amazon": "https://amzn.in/d/02gLjbLi",
+        "amazonAudio": "https://amzn.in/d/07sygAAN"
+      },
+      "dates": {
+        "started": "2026-11-15",
+        "finished": "2026-11-16"
+      }
+    },
+    {
       "urlName": "iron-gold",
       "name": "Iron Gold",
       "image": "iron_gold.webp",

@@ -6,7 +6,7 @@ import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 import { monthsAgo } from "../../../utils";
 import HazyBox from "../../ui/HazyBox";
 import ChronicleBookItem from "../../Chronicle/ChronicleBookItem";
-import Img from "../Img";
+import Img from "../../Img";
 
 const CurrentlyReading: React.FC = () => {
   const allBooks = useAllBooks();

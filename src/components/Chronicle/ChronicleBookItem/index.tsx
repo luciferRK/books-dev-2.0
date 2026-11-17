@@ -4,7 +4,7 @@ import { BOOK_COVER_PREFIX } from "../../../utils/constants";
 import "./ChronicleBookItem.scss";
 import { useNavigate } from "react-router-dom";
 import { useGlobalActions } from "../../../store/global/useGlobal";
-import Img from "../Img";
+import Img from "../../Img";
 
 interface ChronicleBookItemProps {
   book: Book;
